@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamix Score</title>
+	<meta charset="utf-8">
+	<link rel="Shortcut Icon" type="image" href="LittleC.gif">
+	<!-- =========================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- =========================== -->
+	<style type="text/css">
+		input {
+			width: 100%;
+		}
+
+		table.tr.td {
+			text-align: center;
+		}
+
+		#final_row {
+			background-color: #999;
+			color: #fff;
+			font-size: 14;
+		}
+
+		#ctrl_input {
+			width: 20%;
+			word-wrap: break-word;
+   			table-layout: fixed;
+		}
+
+		body {
+			background-color: #eee;
+		}
+	</style>
+	<script type="text/javascript">
+		function calc() {
+			var target = document.getElementById("target").value;
+			var notes = document.getElementById("notes").value;
+			var devi = document.getElementById("deviation").value;
+			var lim = document.getElementById("limit").value;
+
+			if (lim == 0) {
+				lim = 200;
+			}
+
+			var count=1, p, g, c, score, d;	// result_counter, perfect, good, combo, score, "temp deviation", full combo check
+			var temp = [0, 0, 0, 0, 1000000];	// [p, g, c, score, d]
+
+			document.getElementById("result").innerHTML = "";
+			
+			// alert(target);
+
+			for(p = (Math.floor((target+devi)/920000*notes)); p>=0; p--)
+			{
+				for(g=0; g<=(notes-p); g++)
+				{
+					if (p+g == notes) {
+						c = notes;
+					} else {
+						c = 0;
+					}
+
+					for(; c<=(p+g); c++)
+					{
+						score = Math.floor((920000*p + 552000*g)/notes) + Math.floor(80000*c/notes);
+						d = Math.abs(target - score);
+
+						if (d>=0 && d<=devi && d<=temp[4]) 
+						{
+							if (count<=lim) {
+								document.getElementById("result").innerHTML += "<tr><td><input type=\"checkbox\" id="+count+"></td><td id=p"+count+">"+p+"</td><td id=g"+count+">"+g+"</td><td id=c"+count+">"+c+"</td><td id=s"+count+">"+score+"</td><td id=d"+count+">"+d+"</td></tr>";
+							}
+
+							count++;
+						}
+					}
+				}
+			}
+
+			document.getElementById("result").innerHTML += "<tr id=\"final_row\"><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
+			document.getElementById("result_count").innerHTML = "共找到 <span id=\"total\" style=\"color: #f00\">" + (count-1) + "</span> 種組合"
+			// var result = parseInt(target) + parseInt(notes) + parseInt(devi);	// string to int.
+			// document.getElementById("debug").innerHTML = result;
+		}
+
+		function doCookieSetup(name, value) {
+			var expires = new Date();
+			//有效時間保存 20 天 20*24*60*60*1000
+			expires.setTime(expires.getTime() + 1728000000);
+			document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString()
+		}
+
+		function export_select() {
+			var str = "";
+			
+			try {
+				var total = document.getElementById("total").innerHTML;	
+			} catch(e) {
+				alert("請至少勾選一個！");
+				return 0;
+			}
+			
+			var limit = document.getElementById("limit").value;
+			var min = Math.min(total, limit);
+			var savetime = Math.floor(Date.now());
+
+			for(var i=1; i<=min; i++){
+				if(document.getElementById(i).checked)
+					str += (document.getElementById("p"+i).innerHTML+"\t"+document.getElementById("g"+i).innerHTML+"\t"+document.getElementById("c"+i).innerHTML+"\t"+document.getElementById("s"+i).innerHTML+"\t"+document.getElementById("d"+i).innerHTML)+"\n";
+			}
+
+			if (str === "") {
+				alert("請至少勾選一個！");
+				return 0;
+			}
+			
+			// ------------------- 匯出成檔案 ---------------------//
+		    var textFileAsBlob = new Blob([str], {type:'text/plain'});
+		 
+		    var downloadLink = document.createElement("a");
+		    downloadLink.download = "Dnx"+savetime;
+		    downloadLink.innerHTML = "Download File";
+		    if (window.webkitURL != null) {
+		        // Chrome allows the link to be clicked
+		        // without actually adding it to the DOM.
+		        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+		    } else {
+		        // Firefox requires the link to be added to the DOM
+		        // before it can be clicked.
+		        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+		        downloadLink.onclick = destroyClickedElement;
+		        downloadLink.style.display = "none";
+		        document.body.appendChild(downloadLink);
+		    }
+		 
+		    downloadLink.click();
+			
+			 
+			// function destroyClickedElement(event) {
+			//     document.body.removeChild(event.target);
+			// }
+		}
+
+	</script>
+</head>
+<body>
+	<div class="container">	
+		<h2> Dynamix 湊分數小工具</h2><hr style="width: 40%; margin-right: 60%; ">
+		<p id="debug">這是個暴力搜尋的工具，僅供參考。 <br>若運算量過大可能會導致網頁沒有回應，請耐心等待。</p>
+		<p style="color: #bbb">目前發現特定狀況下可能導致公式計算與實際有所出入(通常是公式=實際+1) <br>原因仍不明，正在搜尋補償公式。</p>
+		<p>顯示上限欄可以有效避免網頁沒有回應的問題，預設 <font color="#c00">100</font> 列。</p>
+		<table class="table table-striped">
+			<tr id="ctrl_input">
+				<th>目標分數 Score</th>
+				<th>總音符數 Notes</th>
+				<th>允許誤差 Deviation</th>
+				<th>顯示上限 Row Limit</th>
+				<th id="result_count"></th>
+			</tr>
+			<tr>
+				<td><input type="number" id="target" min="0" max="999999" 	maxlength="6" value="478069"></td>
+				<td><input type="number" id="notes" min="0" max="999"		maxlength="3" value="244"></td>
+				<td><input type="number" id="deviation" min="0" max="9999" 	maxlength="4" value="100"></td>
+				<td><input type="number" id="limit" min="0" max="5000" 	maxlength="4" value="100"></td>
+				<td><input type="button" id="start" value="開始 Start" onclick="calc();"></td>
+			</tr>
+		</table>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><input type="button" name="export" value="匯出" onclick="export_select();"></th>
+					<th>Perfect</th>
+					<th>Good</th>
+					<th>Combo</th>
+					<th>總分 Score</th>
+					<th>誤差 Deviation</th>
+				</tr>
+			</thead>
+			<tbody id="result">
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
