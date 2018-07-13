@@ -1,0 +1,19 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#b01").click(function(){
+  htmlobj=$.ajax({url:"file/data.txt",async:false});
+  $("#myDiv").html(htmlobj.responseText);
+  });
+});
+</script>
+</head>
+<body>
+
+<div id="myDiv"><h2>使用 AJAX 改變文字</h2></div>
+<button id="b01" type="button">改變文字</button>
+
+</body>
+</html>
