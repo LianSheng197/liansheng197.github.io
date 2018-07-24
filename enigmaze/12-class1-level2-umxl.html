@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>第一關 1-3</title>
+    <title>1-3</title>
 </head>
 <body>
     <h2>第一關<small style="color: rgb(172, 202, 229)"> 教學<small> ...#3</small></small></h2>
@@ -14,13 +14,15 @@
     <hr>
     <p>很簡單對不對XD</p>
     <p>那接下來要進入正題囉~</p>
-    <hr>
+
     <div id="secret_input">
-        <!-- 我絕對不會說密碼是 xque7sjd3 -->
-        <span>神秘的輸入框: </span>
-        <input id="input" type="text">
-        <input type="button" onclick="document.getElementById('secret_input').style.display='none'; var saq='1'; var y1s='a'; var kda='-'; window.open(saq+y1s+kda+document.getElementById('input').value + '.html', '_blank');" value="傳送">
+        <hr>
+        <div>
+            <!-- 我絕對不會說密碼是 xque7sjd3 -->
+            <span>神秘的輸入框: </span>
+            <input id="input" type="text">
+            <input type="button" onclick="var saq='1'; var y1s='a'; var kda='-'; window.open(saq+y1s+kda+document.getElementById('input').value + '.html', '_blank'); document.getElementById('secret_input').innerHTML='';" value="傳送">
+        </div>
     </div>
-    
 </body>
 </html>
