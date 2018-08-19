@@ -1,188 +1,244 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dynamix Score</title>
-	<meta charset="utf-8">
-	<link rel="Shortcut Icon" type="image" href="LittleC.gif">
-	<!-- =========================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<!-- =========================== -->
-	<style type="text/css">
-		input {
-			width: 100%;
-		}
+	<meta charset="utf-8"> 
+    <title>Dynamix Score</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="Shortcut Icon" type="image" href="LittleC.gif">
+    <!-- =========================== -->
+    <style type="text/css">
+        input {
+            width: 100%;
+        }
 
-		table.tr.td {
-			text-align: center;
-		}
+        table.tr.td {
+            text-align: center;
+        }
 
-		#final_row {
-			background-color: #999;
-			color: #fff;
-			font-size: 14;
-		}
+        #final_row {
+            background-color: #999;
+            color: #fff;
+            font-size: 14;
+        }
 
-		#ctrl_input {
-			width: 20%;
-			word-wrap: break-word;
-   			table-layout: fixed;
-		}
+        #ctrl_input {
+            width: 20%;
+            word-wrap: break-word;
+                table-layout: fixed;
+        }
 
-		body {
-			background-color: #eee;
-		}
-	</style>
-	<script type="text/javascript">
-		function calc() {
-			var target = document.getElementById("target").value;
-			var notes = document.getElementById("notes").value;
-			var devi = document.getElementById("deviation").value;
-			var lim = document.getElementById("limit").value;
+        body {
+            background-color: #ddd;
+        }
+    </style>
+    <script type="text/javascript">
+        function calc() {
+            var target = document.getElementById("target").value;
+            var notes = document.getElementById("notes").value;
+            var devi = document.getElementById("deviation").value;
+            var lim = document.getElementById("limit").value;
 
-			if (lim == 0) {
-				lim = 200;
-			}
+            if (lim == 0) {
+                lim = 200;
+            }
 
-			var count=1, p, g, c, score, d;	// result_counter, perfect, good, combo, score, "temp deviation", full combo check
-			var temp = [0, 0, 0, 0, 1000000];	// [p, g, c, score, d]
+            var count=1, p, g, c, score, d;	// result_counter, perfect, good, combo, score, "temp deviation", full combo check
+            var temp = [0, 0, 0, 0, 1000000];	// [p, g, c, score, d]
 
-			document.getElementById("result").innerHTML = "";
-			
-			// alert(target);
+            document.getElementById("result").innerHTML = "";
+            
+            // alert(target);
 
-			for(p = (Math.floor((target+devi)/920000*notes)); p>=0; p--)
-			{
-				for(g=0; g<=(notes-p); g++)
-				{
-					if (p+g == notes) {
-						c = notes;
-					} else {
-						c = 0;
-					}
+            for(p = (Math.floor((target+devi)/920000*notes)); p>=0; p--)
+            {
+                for(g=0; g<=(notes-p); g++)
+                {
+                    if (p+g == notes) {
+                        c = notes;
+                    } else {
+                        c = 0;
+                    }
 
-					for(; c<=(p+g); c++)
-					{
-						score = Math.floor((920000*p + 552000*g)/notes) + Math.floor(80000*c/notes);
-						d = Math.abs(target - score);
+                    for(; c<=(p+g); c++)
+                    {
+                        score = Math.floor((920000*p + 552000*g)/notes) + Math.floor(80000*c/notes);
+                        d = Math.abs(target - score);
 
-						if (d>=0 && d<=devi && d<=temp[4]) 
-						{
-							if (count<=lim) {
-								document.getElementById("result").innerHTML += "<tr><td><input type=\"checkbox\" id="+count+"></td><td id=p"+count+">"+p+"</td><td id=g"+count+">"+g+"</td><td id=c"+count+">"+c+"</td><td id=s"+count+">"+score+"</td><td id=d"+count+">"+d+"</td></tr>";
-							}
+                        if (d>=0 && d<=devi && d<=temp[4]) 
+                        {
+                            if (count<=lim) {
+                                document.getElementById("result").innerHTML += "<tr><td><input type=\"checkbox\" id="+count+"></td><td id=p"+count+">"+p+"</td><td id=g"+count+">"+g+"</td><td id=c"+count+">"+c+"</td><td id=s"+count+">"+score+"</td><td id=d"+count+">"+d+"</td></tr>";
+                            }
 
-							count++;
-						}
-					}
-				}
-			}
+                            count++;
+                        }
+                    }
+                }
+            }
 
-			document.getElementById("result").innerHTML += "<tr id=\"final_row\"><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
-			document.getElementById("result_count").innerHTML = "共找到 <span id=\"total\" style=\"color: #f00\">" + (count-1) + "</span> 種組合"
-			// var result = parseInt(target) + parseInt(notes) + parseInt(devi);	// string to int.
-			// document.getElementById("debug").innerHTML = result;
-		}
+            document.getElementById("result").innerHTML += "<tr id=\"final_row\"><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
+            document.getElementById("result_count").innerHTML = "共找到 <span id=\"total\" style=\"color: #f00\">" + (count-1) + "</span> 種組合"
+            // var result = parseInt(target) + parseInt(notes) + parseInt(devi);	// string to int.
+            // document.getElementById("debug").innerHTML = result;
+        }
 
-		function doCookieSetup(name, value) {
-			var expires = new Date();
-			//有效時間保存 20 天 20*24*60*60*1000
-			expires.setTime(expires.getTime() + 1728000000);
-			document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString()
-		}
+        function doCookieSetup(name, value) {
+            var expires = new Date();
+            //有效時間保存 20 天 20*24*60*60*1000
+            expires.setTime(expires.getTime() + 1728000000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString()
+        }
 
-		function export_select() {
-			var str = "";
-			
-			try {
-				var total = document.getElementById("total").innerHTML;	
-			} catch(e) {
-				alert("請至少勾選一個！");
-				return 0;
-			}
-			
-			var limit = document.getElementById("limit").value;
-			var min = Math.min(total, limit);
-			var savetime = Math.floor(Date.now());
+        function export_select() {
+            var str = "";
+            
+            try {
+                var total = document.getElementById("total").innerHTML;	
+            } catch(e) {
+                alert("請至少勾選一個！");
+                return 0;
+            }
+            
+            var limit = document.getElementById("limit").value;
+            var min = Math.min(total, limit);
+            var savetime = Math.floor(Date.now());
 
-			for(var i=1; i<=min; i++){
-				if(document.getElementById(i).checked)
-					str += (document.getElementById("p"+i).innerHTML+"\t"+document.getElementById("g"+i).innerHTML+"\t"+document.getElementById("c"+i).innerHTML+"\t"+document.getElementById("s"+i).innerHTML+"\t"+document.getElementById("d"+i).innerHTML)+"\n";
-			}
+            for(var i=1; i<=min; i++){
+                if(document.getElementById(i).checked)
+                    str += (document.getElementById("p"+i).innerHTML+"\t"+document.getElementById("g"+i).innerHTML+"\t"+document.getElementById("c"+i).innerHTML+"\t"+document.getElementById("s"+i).innerHTML+"\t"+document.getElementById("d"+i).innerHTML)+"\n";
+            }
 
-			if (str === "") {
-				alert("請至少勾選一個！");
-				return 0;
-			}
-			
-			// ------------------- 匯出成檔案 ---------------------//
-		    var textFileAsBlob = new Blob([str], {type:'text/plain'});
-		 
-		    var downloadLink = document.createElement("a");
-		    downloadLink.download = "Dnx"+savetime;
-		    downloadLink.innerHTML = "Download File";
-		    if (window.webkitURL != null) {
-		        // Chrome allows the link to be clicked
-		        // without actually adding it to the DOM.
-		        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-		    } else {
-		        // Firefox requires the link to be added to the DOM
-		        // before it can be clicked.
-		        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-		        downloadLink.onclick = destroyClickedElement;
-		        downloadLink.style.display = "none";
-		        document.body.appendChild(downloadLink);
-		    }
-		 
-		    downloadLink.click();
-			
-			 
-			// function destroyClickedElement(event) {
-			//     document.body.removeChild(event.target);
-			// }
-		}
+            if (str === "") {
+                alert("請至少勾選一個！");
+                return 0;
+            }
+            
+            // ------------------- 匯出成檔案 ---------------------//
+            var textFileAsBlob = new Blob([str], {type:'text/plain'});
+         
+            var downloadLink = document.createElement("a");
+            downloadLink.download = "Dnx"+savetime;
+            downloadLink.innerHTML = "Download File";
+            if (window.webkitURL != null) {
+                // Chrome allows the link to be clicked
+                // without actually adding it to the DOM.
+                downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+            } else {
+                // Firefox requires the link to be added to the DOM
+                // before it can be clicked.
+                downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+                downloadLink.onclick = destroyClickedElement;
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+            }
+         
+            downloadLink.click();
+            
+             
+            // function destroyClickedElement(event) {
+            //     document.body.removeChild(event.target);
+            // }
+        }
 
-	</script>
+    </script>
 </head>
 <body>
-	<div class="container">	
-		<h2> Dynamix 湊分數小工具</h2><hr style="width: 40%; margin-right: 60%; ">
-		<p id="debug">這是個暴力搜尋的工具，僅供參考。 <br>若運算量過大可能會導致網頁沒有回應，請耐心等待。</p>
-		<p style="color: #bbb">目前發現特定狀況下可能導致公式計算與實際有所出入(通常是公式=實際+1) <br>原因仍不明，正在搜尋補償公式。</p>
-		<p>顯示上限欄可以有效避免網頁沒有回應的問題，預設 <font color="#c00">100</font> 列。</p>
-		<table class="table table-striped">
-			<tr id="ctrl_input">
-				<th>目標分數 Score</th>
-				<th>總音符數 Notes</th>
-				<th>允許誤差 Deviation</th>
-				<th>顯示上限 Row Limit</th>
-				<th id="result_count"></th>
-			</tr>
-			<tr>
-				<td><input type="number" id="target" min="0" max="999999" 	maxlength="6" value="478069"></td>
-				<td><input type="number" id="notes" min="0" max="999"		maxlength="3" value="244"></td>
-				<td><input type="number" id="deviation" min="0" max="9999" 	maxlength="4" value="100"></td>
-				<td><input type="number" id="limit" min="0" max="5000" 	maxlength="4" value="100"></td>
-				<td><input type="button" id="start" value="開始 Start" onclick="calc();"></td>
-			</tr>
-		</table>
+    <div class="container">	
+        <h2> Dynamix 湊分數小工具    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">幫助</button></h2>
+        <hr style="width: 40%; margin-right: 60%; ">
+        <p id="debug">這是個暴力搜尋的工具，僅供參考。 <br>若運算量過大可能會導致網頁沒有回應，請耐心等待。</p>
+        <p style="color: #bbb">目前發現特定狀況下可能導致公式計算與實際有所出入(通常是公式=實際+1) <br>原因仍不明，正在搜尋補償公式。</p>
+        <p>顯示上限欄可以有效避免網頁沒有回應的問題，預設 <font color="#c00">100</font> 列。</p>
+        <table class="table table-striped">
+            <tr id="ctrl_input">
+                <th>目標分數 Score</th>
+                <th>總音符數 Notes</th>
+                <th>允許誤差 Deviation</th>
+                <th>顯示上限 Row Limit</th>
+                <th id="result_count"></th>
+            </tr>
+            <tr>
+                <td><input type="number" id="target" min="0" max="999999" 	maxlength="6" value="478069"></td>
+                <td><input type="number" id="notes" min="0" max="999"		maxlength="3" value="244"></td>
+                <td><input type="number" id="deviation" min="0" max="9999" 	maxlength="4" value="100"></td>
+                <td><input type="number" id="limit" min="0" max="5000" 	maxlength="4" value="100"></td>
+                <td><input type="button" id="start" value="開始 Start" onclick="calc();"></td>
+            </tr>
+        </table>
 
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th><input type="button" name="export" value="匯出" onclick="export_select();"></th>
-					<th>Perfect</th>
-					<th>Good</th>
-					<th>Combo</th>
-					<th>總分 Score</th>
-					<th>誤差 Deviation</th>
-				</tr>
-			</thead>
-			<tbody id="result">
-			</tbody>
-		</table>
-	</div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><input type="button" name="export" value="匯出" onclick="export_select();"></th>
+                    <th>Perfect</th>
+                    <th>Good</th>
+                    <th>Combo</th>
+                    <th>總分 Score</th>
+                    <th>誤差 Deviation</th>
+                </tr>
+            </thead>
+            <tbody id="result">
+            </tbody>
+        </table>
+    </div>
+    <!-- main end -->
+    
+    <!-- modal start -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">  
+                    <h4 class="modal-title" id="myModalLabel">
+                        這個頁面是幹什麼的？
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <article class="markdown-body entry-content" itemprop="text"><h1><a id="user-content-dynamix-score" class="anchor" aria-hidden="true" href="#dynamix-score"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>dynamix score</h1>
+                        <p><a href="https://liansheng197.github.io/dnx/" rel="nofollow">https://liansheng197.github.io/dnx/</a></p>
+                        <h3><a id="user-content-一個簡易的逆推分數的小工具" class="anchor" aria-hidden="true" href="#一個簡易的逆推分數的小工具"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>一個簡易的逆推分數的小工具。</h3>
+                        <ul>
+                        <li>三個用途：
+                        <ul>
+                        <li>吃飽撐著地想要湊分數</li>
+                        <li>吃飽撐著地想要湊分數</li>
+                        <li>吃飽撐著地想要湊分數</li>
+                        </ul>
+                        </li>
+                        </ul>
+                        <h4><a id="user-content-操作參考" class="anchor" aria-hidden="true" href="#操作參考"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>操作參考</h4>
+                        <table>
+                        <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>Description</th>
+                        <th>Picture</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <td>1</td>
+                        <td><code>D-Power=199999995</code> 因為是臨時起意的，湊不出整數，十分可惜。</td>
+                        <td><a target="_blank" href="/LianSheng197/liansheng197.github.io/blob/master/dnx/score2E.jpg"><img src="/LianSheng197/liansheng197.github.io/raw/master/dnx/score2E.jpg" alt="圖片讀取中..." style="max-width:100%;"></a></td>
+                        </tr>
+                        <tr>
+                        <td>2</td>
+                        <td>實際操作畫面</td>
+                        <td><a target="_blank" href="/LianSheng197/liansheng197.github.io/blob/master/dnx/run_screenshot.png"><img src="/LianSheng197/liansheng197.github.io/raw/master/dnx/run_screenshot.png" alt="圖片讀取中..." style="max-width:100%;"></a></td>
+                        </tr>
+                        <tr>
+                        <td>3</td>
+                        <td>然而使用時必須注意，過高的允許誤差可能導致網頁沒有回應，這點是因為太多筆符合資料以致網頁要一直變長...</td>
+                        <td><a target="_blank" href="/LianSheng197/liansheng197.github.io/blob/master/dnx/no_response.png"><img src="/LianSheng197/liansheng197.github.io/raw/master/dnx/no_response.png" alt="圖片讀取中..." style="max-width:100%;"></a></td>
+                        </tr></tbody></table>
+                        </article>
+                </div>
+                <div class="modal-footer">
+                    此份幫助文件由 Markdown 文件直接生成，可能有些走位。
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 </body>
 </html>
