@@ -7,4 +7,5 @@
 > * [dtest](dtest): DataTable Test. 嘗試使用 DataTable。
 > * [enigmaze](enigmaze): 一個主要以文字及連結構成的｢謎宮｣，你能闖到最後嗎？(建造中)
 > * [inflation](inflation): inflation-rpg (通膨勇者) 的爛翻譯。(順便練練常用 Markdown)
+> * [lightup](lightup): 點燈遊戲(未完成、僅完成手動點擊效果)。
 > * [sbox_ajax](sbox_ajax): Ajax Test. 使用 Ajax 讀取主機上的檔案內容。
