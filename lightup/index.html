@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="Shortcut Icon" type="image" href="icon.jpg">
+    <title>Light Up!</title>
+    <style>
+        :root{
+            --turn_on: #e0e0e0;
+            --turn_off: #484848;
+            --size: 40px;
+        }
+        td {
+            width: var(--size);
+            height: var(--size);
+            background-color: var(--turn_off);
+        }
+        div {
+            float: left;
+        }
+    </style>
+    <script type="text/javascript">
+        // init status (0: dark; 1: light.)
+        // 取名 status 會爆炸！
+        var table_status = Array(121).fill(0);
+
+        // 取名 click 會爆炸！    
+        function change(number) {
+            // light? (1)
+            if(table_status[number] > 0) {
+                turnOFF(number);
+            } else {
+                turnON(number);
+            }
+            // 判斷下塊
+            if(number < 110){
+                if(table_status[number+11] > 0) {
+                    turnOFF(number+11);
+                } else {
+                    turnON(number+11);
+                }
+            }
+            //判斷上塊
+            if(number > 10 ){
+                if(table_status[number-11] > 0) {
+                    turnOFF(number-11);
+                } else {
+                    turnON(number-11);
+                }
+            }
+            // 判斷右塊
+            if(number%11 != 10){
+                if(table_status[number+1] > 0) {
+                    turnOFF(number+1);
+                } else {
+                    turnON(number+1);
+                }
+            }
+            // 判斷左塊
+            if(number%11 != 0){
+                if(table_status[number-1] > 0) {
+                    turnOFF(number-1);
+                } else {
+                    turnON(number-1);
+                }
+            }
+        }
+
+        function turnON(i) {
+            document.getElementById(i).style.backgroundColor = "#e0e0e0";
+            table_status[i] = 1;
+        }
+        function turnOFF(i) {
+            document.getElementById(i).style.backgroundColor = "#484848";
+            table_status[i] = 0;
+        }
+    </script>   
+</head>
+<body style="background-color: #8e8e8e">
+    <div>
+        <table>
+            <tbody id="light-table"></tbody>
+        </table>
+    </div>
+    <div style="width: 20px">
+        <hr width=1 solid size=500 style="border-color: #ffffff">
+    </div>
+    <div id="ctrl_panel">
+            111
+    </div>
+    <script>
+        var lt = document.getElementById("light-table");
+        for(var i=0; i<11; i++) {
+            var td_tmp = "<tr>";
+            for(var j=0; j<11; j++) {
+                var no = (i*11+j);
+                td_tmp += "<td id='"+no+"' onclick='change("+no+");'></td>";
+            }
+            td_tmp += "</tr>";
+            lt.innerHTML += td_tmp;
+        }
+    </script>
+</body>
+</html>
