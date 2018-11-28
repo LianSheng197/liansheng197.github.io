@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kabuntu! @changwai</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- icon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!----------------------------------------->
+        <link href='//fonts.googleapis.com/css?family=Inconsolata:700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/typewriter.js"></script>
+        <script src="js/content.js"></script>        
+
+        <!-- custom css -->
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/drag.css">
+        <link rel="stylesheet" href="css/navbar.css">
+
+        <!-- custom js -->
+        <script src="js/right_click.js"></script>
+        <script src="js/nav_time.js"></script>
+    </head>
+
+    <body>
+        <!-- Navbar -->
+        <div class="topnav">
+            <div class="left" id="title">Kabuntu Desktop</div>
+                        
+            <div class="right" id="about"><a href="#"><i class="fa fa-gear"></i></a></div>
+            <div class="right" id="time">23:59:59</div>
+            <div class="right" id="sound"><i class="fa fa-volume-up"></i></div>
+            <div class="right" id="wifi"><i class="material-icons" style="font-size:16px">wifi</i></div>
+            
+            <div style="clear:both;"></div>
+        </div>
+
+        <!-- Sidebar -->
+        <!-- <div class="sidenav">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#clients">Clients</a>
+            <a href="#contact">Contact</a>
+        </div> -->
+              
+        <div class="main" id="main">
+            <!-- Terminal -->
+            <p id="terminal"></p>
+            <br><br>
+            
+            <!---------- Drag window ---------->
+            <!-- #1 Terminal -->
+            <div class="window terminal" id="window1">
+                <div class="windowheader"><i class="fa fa-times-circle"></i>ls@changwai: ~</div>
+                <p>Terminal</p>
+            </div>
+            <!-- #2 Firefox -->
+            <div class="window" id="window2">
+                <div class="windowheader"><i class="fa fa-times-circle"></i>Kabuntu - Mozilla Firefox</div>
+                <iframe src="readme.html"></iframe>
+            </div>
+            <!-- #3 Imageviewer (from terminal) -->
+        </div>
+
+        <!-- Terminal start -->
+        <!-- <script>
+        $(function () {
+            var typewriter = new Typewriter($("#terminal"));
+            typewriter.setCaret("_");
+            typewriter.setCaretPeriod(500);
+            typewriter.setDelay(100, 50);
+            animate(typewriter);
+        });
+        </script> -->
+
+        <!-- Navbar Time -->
+        <script>
+            setInterval(function(){ now(); }, 499);
+
+            // div click listen
+            var title = document.getElementById("title");
+            document.getElementById("window1").addEventListener("click", function(){ title.innerText = "Terminal" });
+            // document.getElementById("window2").addEventListener("click", function(){ title.innerText = "Mozilla Firefox" });
+            // document.getElementById("main").addEventListener("click", function(){ title.innerText = "Kabuntu Desktop" });
+        </script>
+
+        <script src="js/sidebar.js"></script>
+        <script src="js/drag.js"></script>
+    </body>
+</html>

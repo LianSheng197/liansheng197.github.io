@@ -1,0 +1,27 @@
+.topnav {
+    overflow: hidden;
+    background-color: #444;
+  }
+  
+.topnav .left{
+    color: rgba(255, 255, 255, 0.85);
+    margin-left:5px;
+    margin-right:5px;
+    float:left;
+}
+.topnav .right{
+    color: rgba(255, 255, 255, 0.85);
+    margin-left:5px;
+    margin-right:5px;
+    float:right;
+}
+.topnav a {
+    float: left;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    text-decoration: none;
+}  
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
