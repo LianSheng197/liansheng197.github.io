@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/drag.css">
         <link rel="stylesheet" href="css/navbar.css">
+        <link rel="stylesheet" href="css/sidebar.css">
 
         <!-- custom js -->
         <script src="js/right_click.js"></script>
@@ -40,31 +41,37 @@
         </div>
 
         <!-- Sidebar -->
-        <!-- <div class="sidenav">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#clients">Clients</a>
-            <a href="#contact">Contact</a>
-        </div> -->
-              
+        <div class="sidebar">
+            <div class="top">Search</div>
+            <div class="top">Nautilus</div>
+            <div class="top">Firefox</div>
+            <div class="top">Setting</div>
+            <div class="top">Terminal</div>
+            <div class="bottom">Trash</div>
+        </div>
+        
+        <!-- Desktop -->
         <div class="main" id="main">
+            <p id="desktop">1234</p>
             <!-- Terminal -->
             <p id="terminal"></p>
             <br><br>
-            
-            <!---------- Drag window ---------->
-            <!-- #1 Terminal -->
-            <div class="window terminal" id="window1">
-                <div class="windowheader"><i class="fa fa-times-circle"></i>ls@changwai: ~</div>
-                <p>Terminal</p>
-            </div>
-            <!-- #2 Firefox -->
-            <div class="window" id="window2">
-                <div class="windowheader"><i class="fa fa-times-circle"></i>Kabuntu - Mozilla Firefox</div>
-                <iframe src="readme.html"></iframe>
-            </div>
-            <!-- #3 Imageviewer (from terminal) -->
+        </div>    
+
+        <!---------- Drag window ---------->
+        <!-- window header require id: for header draggable only. -->
+        <!-- #1 Terminal -->
+        <div class="window terminal" id="window1">
+            <div class="windowheader" id="window1header"><i class="fa fa-times-circle"></i>ls@changwai: ~</div>
+            <p>Terminal</p>
         </div>
+        <!-- #2 Firefox -->
+        <div class="window active" id="window2">
+            <div class="windowheader" id="window2header"><i class="fa fa-times-circle"></i>Kabuntu - Mozilla Firefox</div>
+            <iframe src="readme.html"></iframe>
+        </div>
+        <!-- #3 Imageviewer (from terminal) -->
+        
 
         <!-- Terminal start -->
         <!-- <script>
@@ -84,8 +91,8 @@
             // div click listen
             var title = document.getElementById("title");
             document.getElementById("window1").addEventListener("click", function(){ title.innerText = "Terminal" });
-            // document.getElementById("window2").addEventListener("click", function(){ title.innerText = "Mozilla Firefox" });
-            // document.getElementById("main").addEventListener("click", function(){ title.innerText = "Kabuntu Desktop" });
+            document.getElementById("window2").addEventListener("click", function(){ title.innerText = "Mozilla Firefox" });
+            document.getElementById("main").addEventListener("click", function(){ title.innerText = "Kabuntu Desktop" });
         </script>
 
         <script src="js/sidebar.js"></script>

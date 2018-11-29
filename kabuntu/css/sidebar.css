@@ -1,34 +1,52 @@
-.sidenav {
-    height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(255, 97, 97);
-    overflow-x: hidden;
-    padding-top: 20px;
+/* sidebar */
+.sidebar {
+    overflow: hidden;
+    background-color: rgb(66, 6, 53);
+    -moz-user-select: none;  /* for Firefox */
+    -webkit-user-select: none;   /* for Chrome */
+    position: absolute;
+    width: 48px;
+    height: calc(100vh - 20px);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: xx-small;
+    font-weight: 100;
 }
 
-.sidenav a {
-    padding: 6px 8px 6px 16px;
+/* sidebar item */
+.sidebar .top{
+    color: rgba(255, 255, 255, 0.85);
+    margin-left: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    width: 40px;
+    height: 40px;
+    border: 1px dashed red;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+.sidebar .bottom{
+    color: rgba(255, 255, 255, 0.85);
+    margin-left: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    width: 40px;
+    height: 40px;
+    border: 1px dashed red;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    position: absolute; 
+    bottom: 0;
+}
+.sidebar a {
+    float: left;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+}  
+.sidebar a:hover {
+    background-color: #ddd;
+    color: black;
 }

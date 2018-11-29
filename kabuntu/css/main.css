@@ -1,13 +1,40 @@
 /* No scroll */
-html, body {margin: 0; height: 100%; overflow: hidden}
+html, body {
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden
+}
 
 /* Body Ubuntu font */
 body { 
-    background-color:black; color: rgb(0, 159, 0); font-family: 'Inconsolata', sans-serif; font-weight: bold; 
+    background-color:black; 
+    color: rgb(0, 159, 0); 
+    font-family: 'Inconsolata', sans-serif; 
+    font-weight: bold; 
+    font-family: Ubuntu + monospace; 
+    font-size: 16px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 20px;
 
-    font-family: Ubuntu + monospace; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 20px;
     background-image: url("../img/Xerus.jpg");
     background-size: cover;
+}
+
+#main {
+    /* Same as the width of the sidenav */
+    /* margin-left: 160px;  */
+    /* font-size: 28px; */
+    /* padding: 0px 10px; */
+    /* background-color: rgba(33, 33, 33, 0.4); */
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 48px;
+    top: 16px;
+    z-index: 5;
+    padding: 2px;
 }
 
 /* Terminal style */
