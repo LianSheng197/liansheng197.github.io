@@ -32,7 +32,7 @@
         <div class="topnav">
             <div class="left" id="title">Kabuntu Desktop</div>
                         
-            <div class="right" id="about"><a href="#"><i class="fa fa-gear"></i></a></div>
+            <div class="right" id="about"><a><i class="fa fa-gear"></i></a></div>
             <div class="right" id="time">23:59:59</div>
             <div class="right" id="sound"><i class="fa fa-volume-up"></i></div>
             <div class="right" id="wifi"><i class="material-icons" style="font-size:16px">wifi</i></div>
@@ -70,7 +70,9 @@
             <div class="windowheader" id="window2header"><i class="fa fa-times-circle"></i>Kabuntu - Mozilla Firefox</div>
             <iframe src="readme.html"></iframe>
         </div>
-        <!-- #3 Imageviewer (from terminal) -->
+        <!-- #3 Nautilus -->
+        <!-- #4 Trash Can -->
+        <!-- #5 Imageviewer -->
         
 
         <!-- Terminal start -->
@@ -85,17 +87,12 @@
         </script> -->
 
         <!-- Navbar Time -->
-        <script>
-            setInterval(function(){ now(); }, 499);
-
-            // div click listen
-            var title = document.getElementById("title");
-            document.getElementById("window1").addEventListener("click", function(){ title.innerText = "Terminal" });
-            document.getElementById("window2").addEventListener("click", function(){ title.innerText = "Mozilla Firefox" });
-            document.getElementById("main").addEventListener("click", function(){ title.innerText = "Kabuntu Desktop" });
-        </script>
-
+        <script src="js/time.js"></script>
+        <!-- Window -->
+        <script src="js/window.js"></script>
+        <!-- Sidebar -->
         <script src="js/sidebar.js"></script>
+        <!-- Window Draggable -->
         <script src="js/drag.js"></script>
     </body>
 </html>
