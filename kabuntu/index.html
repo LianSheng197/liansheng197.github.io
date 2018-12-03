@@ -24,7 +24,6 @@
 
         <!-- custom js -->
         <script src="js/right_click.js"></script>
-        <script src="js/nav_time.js"></script>
     </head>
 
     <body>
@@ -33,7 +32,7 @@
             <div class="left" id="title">Kabuntu Desktop</div>
                         
             <div class="right" id="about"><a><i class="fa fa-gear"></i></a></div>
-            <div class="right" id="time">23:59:59</div>
+            <div class="right" id="time">00:00:00</div>
             <div class="right" id="sound"><i class="fa fa-volume-up"></i></div>
             <div class="right" id="wifi"><i class="material-icons" style="font-size:16px">wifi</i></div>
             
@@ -42,12 +41,12 @@
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <div class="top">Search</div>
-            <div class="top">Nautilus</div>
-            <div class="top">Firefox</div>
-            <div class="top">Setting</div>
-            <div class="top">Terminal</div>
-            <div class="bottom">Trash</div>
+            <div class="top" id="s_search">Search</div>
+            <div class="top" id="s_3">Nautilus</div>
+            <div class="top" id="s_2">Firefox</div>
+            <div class="top" id="s_5">Setting</div>
+            <div class="top" id="s_1">Terminal</div>
+            <div class="bottom" id="s_4">Trash</div>
         </div>
         
         <!-- Desktop -->
@@ -62,17 +61,41 @@
         <!-- window header require id: for header draggable only. -->
         <!-- #1 Terminal -->
         <div class="window terminal" id="window1">
-            <div class="windowheader" id="window1header"><i class="fa fa-times-circle"></i>ls@changwai: ~</div>
+            <div class="windowheader" id="window1header">
+                <i class="fa fa-times-circle"></i>
+                ls@changwai: ~
+            </div>
             <p>Terminal</p>
         </div>
         <!-- #2 Firefox -->
         <div class="window active" id="window2">
-            <div class="windowheader" id="window2header"><i class="fa fa-times-circle"></i>Kabuntu - Mozilla Firefox</div>
+            <div class="windowheader" id="window2header">
+                <i class="fa fa-times-circle"></i>
+                Kabuntu - Mozilla Firefox
+            </div>
             <iframe src="readme.html"></iframe>
         </div>
         <!-- #3 Nautilus -->
+        <div hidden class="window" id="window3">
+            <div class="windowheader" id="window3header">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <p>Empty</p>
+        </div>
         <!-- #4 Trash Can -->
-        <!-- #5 Imageviewer -->
+        <div hidden class="window" id="window4">
+            <div class="windowheader" id="window4header">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <p>Empty</p>
+        </div>
+        <!-- #5 Setting -->
+        <div hidden class="window" id="window5">
+            <div class="windowheader" id="window5header">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <p>Empty</p>
+        </div>
         
 
         <!-- Terminal start -->
@@ -90,8 +113,6 @@
         <script src="js/time.js"></script>
         <!-- Window -->
         <script src="js/window.js"></script>
-        <!-- Sidebar -->
-        <script src="js/sidebar.js"></script>
         <!-- Window Draggable -->
         <script src="js/drag.js"></script>
     </body>

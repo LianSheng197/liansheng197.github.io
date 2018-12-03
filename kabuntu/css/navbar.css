@@ -1,7 +1,11 @@
 /* navbar */
 .topnav {
     overflow: hidden;
-    background-color: #444;
+    background: -webkit-linear-gradient(#666, #444);
+    background: -o-linear-gradient(#666, #444);
+    background: -moz-linear-gradient(#666, #444);
+    background: linear-gradient(#666, #444);
+    box-shadow: 2px 2px 2px 2px rgba(44, 44, 44, 0.5);
     -moz-user-select: none;  /* for Firefox */
     -webkit-user-select: none;   /* for Chrome */
 }
@@ -18,6 +22,8 @@
     margin-left:5px;
     margin-right:5px;
     float:right;
+    -webkit-transition:1.2s;   /* 改變數字的時候有淡入淡出的效果 */
+    transition:1.3s;
 }
 .topnav a {
     float: left;

@@ -41,6 +41,10 @@
     opacity: 1 !important;
 }
 
+/* .windowheader ::before{
+    content: "<i class='fa fa-times-circle'></i>";
+} */
+
 /* window close button */
 .windowheader .fa-times-circle{
     color: rgb(255, 105, 105);
@@ -69,24 +73,24 @@
 }
 
 #window2 {
+    left: 160px;
+    top: 80px;
+}
+
+#window3 {
     left: 220px;
     top: 120px;
 }
 
-/* #window3 {
-    left: 95px;
-    top: 95px;
-}
-
 #window4 {
-    left: 120px;
-    top: 120px;
+    left: 280px;
+    top: 160px;
 }
 
 #window5 {
-    left: 145px;
-    top: 145px;
-} */
+    left: 340px;
+    top: 200px;
+}
 
 /* select window */
 .active {
