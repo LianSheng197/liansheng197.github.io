@@ -4,116 +4,45 @@
         <title>Kabuntu! @changwai</title>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- icon -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!----------------------------------------->
-        <link href='//fonts.googleapis.com/css?family=Inconsolata:700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="js/typewriter.js"></script>
-        <script src="js/content.js"></script>        
-
-        <!-- custom css -->
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/drag.css">
-        <link rel="stylesheet" href="css/navbar.css">
-        <link rel="stylesheet" href="css/sidebar.css">
-
-        <!-- custom js -->
-        <script src="js/right_click.js"></script>
     </head>
-
     <body>
+        <!-- CSS Link -->
+        <div inc="css"></div>
+        
         <!-- Navbar -->
-        <div class="topnav">
-            <div class="left" id="title">Kabuntu Desktop</div>
-                        
-            <div class="right" id="about"><a><i class="fa fa-gear"></i></a></div>
-            <div class="right" id="time">00:00:00</div>
-            <div class="right" id="sound"><i class="fa fa-volume-up"></i></div>
-            <div class="right" id="wifi"><i class="material-icons" style="font-size:16px">wifi</i></div>
-            
-            <div style="clear:both;"></div>
-        </div>
+        <div class="topnav" inc="nav"></div>
 
         <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="top" id="s_search">Search</div>
-            <div class="top" id="s_3">Nautilus</div>
-            <div class="top" id="s_2">Firefox</div>
-            <div class="top" id="s_5">Setting</div>
-            <div class="top" id="s_1">Terminal</div>
-            <div class="bottom" id="s_4">Trash</div>
-        </div>
+        <div class="sidebar" inc="side"></div>
         
         <!-- Desktop -->
-        <div class="main" id="main">
-            <p id="desktop">1234</p>
-            <!-- Terminal -->
-            <p id="terminal"></p>
-            <br><br>
-        </div>    
+        <div class="main" id="main" inc="desktop"></div>
 
-        <!---------- Drag window ---------->
-        <!-- window header require id: for header draggable only. -->
-        <!-- #1 Terminal -->
-        <div class="window terminal" id="window1">
-            <div class="windowheader" id="window1header">
-                <i class="fa fa-times-circle"></i>
-                ls@changwai: ~
-            </div>
-            <p>Terminal</p>
-        </div>
-        <!-- #2 Firefox -->
-        <div class="window active" id="window2">
-            <div class="windowheader" id="window2header">
-                <i class="fa fa-times-circle"></i>
-                Kabuntu - Mozilla Firefox
-            </div>
-            <iframe src="readme.html"></iframe>
-        </div>
-        <!-- #3 Nautilus -->
-        <div hidden class="window" id="window3">
-            <div class="windowheader" id="window3header">
-                <i class="fa fa-times-circle"></i>
-            </div>
-            <p>Empty</p>
-        </div>
-        <!-- #4 Trash Can -->
-        <div hidden class="window" id="window4">
-            <div class="windowheader" id="window4header">
-                <i class="fa fa-times-circle"></i>
-            </div>
-            <p>Empty</p>
-        </div>
-        <!-- #5 Setting -->
-        <div hidden class="window" id="window5">
-            <div class="windowheader" id="window5header">
-                <i class="fa fa-times-circle"></i>
-            </div>
-            <p>Empty</p>
-        </div>
+        <!-- Windows -->
+        <div inc="windows"></div>
         
-
-        <!-- Terminal start -->
-        <!-- <script>
-        $(function () {
-            var typewriter = new Typewriter($("#terminal"));
-            typewriter.setCaret("_");
-            typewriter.setCaretPeriod(500);
-            typewriter.setDelay(100, 50);
-            animate(typewriter);
-        });
-        </script> -->
-
+        <!---------- Scripts ---------->
+        <!-- Include HTML -->
+        <script src="js/include.js"></script>
         <!-- Navbar Time -->
         <script src="js/time.js"></script>
-        <!-- Window -->
-        <script src="js/window.js"></script>
         <!-- Window Draggable -->
         <script src="js/drag.js"></script>
+        <!-- Right Click -->
+        <script src="js/right_click.js"></script>
+        <!-- Window -->
+        <script src="js/window.js"></script>
+        <!-- Terminal -->
+        <!-- <script>
+            $(function () {
+                var typewriter = new Typewriter($("#terminal"));
+                typewriter.setCaret("_");
+                typewriter.setCaretPeriod(500);
+                typewriter.setDelay(100, 50);
+                animate(typewriter);
+            });
+        </script> -->
     </body>
 </html>

@@ -59,11 +59,10 @@
 .window iframe {
     margin-left: 0.5%;
     margin-top: 0.5%;
-    margin-bottom: -1%;
     text-align: center;
     border: 0;
     width: 99%;
-    height: 99%;
+    height: calc(97.5% - 20px);
 }
 
 /* initial position */

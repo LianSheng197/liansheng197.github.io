@@ -12,10 +12,10 @@ if (document.getElementById("window9")) {dragElement(document.getElementById("wi
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
-    /* if present, the header is where you move the DIV from:*/
+    // window's header movable only.
     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
   } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    // Whole window movable.
     elmnt.onmousedown = dragMouseDown;
   }
 
@@ -26,6 +26,7 @@ function dragElement(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     document.onmouseup = closeDragElement;
+    $('iframe').contents().find("body").on('mouseup', closeDragElement);
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
   }

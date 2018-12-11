@@ -8,7 +8,7 @@
     width: 48px;
     height: calc(100vh - 20px);
     padding-top: 2px;
-    padding-bottom: 2px;
+    padding-bottom: 4px;
     font-size: xx-small;
     font-weight: 100;
 }

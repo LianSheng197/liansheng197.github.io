@@ -19,57 +19,58 @@ $.each(close, function(i, value) {
 });
 
 // select window event listener
+console.log(terminal);
 terminal.addEventListener("mousedown", function(){ 
     title.innerText = "Terminal";
-    init();
-    terminal.classList.add("active");
+    order(this);
 });
 
 firefox.addEventListener("mousedown", function(){ 
     title.innerText = "Mozilla Firefox";
-    init();
-    firefox.classList.add("active");
+    order(this);
 });
 $('iframe').on("load", function(){
     $(this).contents().find("body").on('mousedown', function(){ 
         title.innerText = "Mozilla Firefox";
-        init();
-        firefox.classList.add("active"); 
+        order(this);
     });
 });
 
 nautilus.addEventListener("mousedown", function(){ 
     title.innerText = "Nautilus";
-    init();
-    nautilus.classList.add("active");
+    order(this);
 });
 
 trush.addEventListener("mousedown", function(){ 
     title.innerText = "Trush";
-    init();
-    trush.classList.add("active");
+    order(this);
 });
 
 imageviewer.addEventListener("mousedown", function(){ 
     title.innerText = "Imageviewer";
-    init();
-    imageviewer.classList.add("active");
+    order(this);
 });
 
 desktop.addEventListener("mousedown", function(){ 
     title.innerText = "Kabuntu Desktop"; 
-    init();
-    desktop.classList.add("active");
+    order(this);
 });
 
-// remove 'active' from all window 
-function init() {
-    desktop.classList.remove("active");
-    terminal.classList.remove("active");
-    firefox.classList.remove("active");
-    nautilus.classList.remove("active");
-    trush.classList.remove("active");
-    imageviewer.classList.remove("active");
+
+// get all windows initial z-index.
+var windows_z = [
+    $(terminal).css("z-index"),
+    $(firefox).css("z-index"),
+    $(nautilus).css("z-index"),
+    $(trush).css("z-index"),
+    $(imageviewer).css("z-index"),
+]
+// window's z-index order.
+function order(select) {
+    if($(select).css("z-index") != 100) {
+        console.log(select);
+    }
+    console.log(windows_z);
 }
 
 // open window (form sidebar)
@@ -84,7 +85,7 @@ for(let i=1; i<=5; i++){
     let window = document.getElementById("window" + i);
     sidebar_item.addEventListener("click", function(){
         console.log(this);
-        init();
+        order(this);
         $(window).show();
         window.classList.add("active");
     });
