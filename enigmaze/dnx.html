@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamix Score</title>
+<meta charset="utf-8">
+<link rel="Shortcut Icon" type="image" href="LittleC.gif">
+<!-- =========================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- =========================== -->
+<style type="text/css">
+	body {
+		background-color: #ccc;
+		padding: 4em;
+	}
+
+	#div-title {
+		font-size: 24pt;
+		padding: 2em;
+	}
+
+	#div-line {
+
+	}
+
+	#describe {
+		font-size: 14pt;
+	}
+
+	#div-divider {
+		border: 0;
+		height: 0; /* Firefox... */
+		box-shadow: 0 0 10px 1px black;
+	}
+
+	table {
+		border-collapse: collapse;
+		word-break: break-all;
+		table-layout: fixed;
+	}
+
+	#left-td {
+		width: 60%;
+		padding-left: 2em;
+	}
+
+	#right-td {
+		width: 40%;
+		padding-left: 3em;
+		padding-right: 3em;
+
+	}
+
+	#psd {
+
+	}
+
+	img {
+		width: 100%;
+	}
+
+
+</style>
+
+<style type="text/css">
+
+	/*自動隱藏超出長寬的圖片*/
+	.post  {
+	overflow: hidden;
+	}
+	
+	/*轉場的時間*/	
+	.post img {
+	transition: all 0.3s ease 0s;
+	}
+	
+	/*判斷滑鼠的動作放大圖片還有增加透明度*/
+	.post img:hover {
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+	opacity: .7;
+	}
+</style>
+
+<!-- ========================== -->
+<script src="js/openfile.js"></script>
+<script src="js/special.js"></script>
+<script type="text/javascript">
+	function confirm() {
+		var context = document.getElementById('hid');
+		var psd = document.getElementById("psd").value;
+		var v1 = document.getElementById("1").checked;
+		var v2 = document.getElementById("2").checked;
+		var v3 = document.getElementById("3").checked;
+		var v4 = document.getElementById("4").checked;
+		var v5 = document.getElementById("5").checked;
+		var v = psd+v1+v2+v3+v4+v5;
+		v = Base64.encode(v);
+		if (v===b64psd) {
+			context.innerHTML = "";
+			hidcontent();
+
+		} else {
+			openFile('CasualLibrarian/FirstComplete.tsv');
+			//window.location.reload();
+		}
+	}
+
+	function hidcontent() {
+		document.getElementById('hid').innerHTML += "<div id='output'>";
+
+	}
+
+</script>
+</head>
+<body id="hid">
+<!-- 
+<div><span id="b64"> </span><br><span id="dec"></span></div>
+<input type='file' accept='text/plain' onchange='openFile(event)'><br>
+<div id='output'>
+	-->
+	<div>
+	<span id="div-title">
+		<b>湊分數小工具</b>
+	</span>
+	<hr id="div-line">
+	<table>
+		<tr>
+			<th id="left-td"></th>
+			<th id="right-td"></th>
+		</tr>
+		<tr>
+			<td id="left-td">
+				<p id="describe">
+					顧名思義，就是湊分數用的工具。 太無聊才會用到這玩意。 如果你還是堅持要看看，那我就不攔你了。 連結在右邊，請慢慢享用。
+				</p>
+			</td>
+			<td id="right-td">
+				<a href="ScoreCalc/index.html"><div class="post"><img src="enter-button-green-glass.png"></div></a>
+			</td>
+		</tr>
+	</table>
+	
+	</div>
+
+	<hr id="div-divider">
+
+	<div>
+		<span id="div-title">
+			<b>湊 Frags 小工具</b>
+		</span>
+		<hr id="div-line">
+		<table>
+			<tr>
+				<th id="left-td"></th>
+				<th id="right-td"></th>
+			</tr>
+			<tr>
+				<td id="left-td">
+					<p id="describe">
+						就是湊 Frags 用的。你可以輸入各個等級預估得分，就可以計算出想達到多少 Frags 需要幾場遊戲。
+					</p>
+				</td>
+				<td id="right-td">
+				<a href="">	<div class="post"><img src="enter-button-green-glass.png"></div></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!-- 這個部分尚未完成 -->
+	<!-- <div>
+	<span id="div-title">
+		<b>Casual Librarian's Playground</b>
+	</span>
+	<hr id="div-line">
+	<table>
+		<tr>
+			<td id="left-td">
+				<img src="Page_Under_Construction.png">
+			</td>
+			<td id="right-td">
+				<a href="ScoreCalc/index.html"><img src="enter-button-green-glass.png"></a>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<hr id="div-divider">
+	<form>
+	<div>
+		<input type="text" id="psd">
+		<input type="checkbox" id="1" value="1">
+		<label for="1">1</label>
+		<input type="checkbox" id="2" value="2">
+		<label for="2">2</label>
+		<input type="checkbox" id="3" value="3">
+		<label for="3">3</label>
+		<input type="checkbox" id="4" value="4">
+		<label for="4">4</label>
+		<input type="checkbox" id="5" value="5">
+		<label for="5">5</label>
+		<input type="button" value="Submit" onclick="confirm();">
+	</div>
+	
+	</form> -->
+
+<script src="js/base64.js.min"></script>
+<script type="text/javascript">
+// 把 script 放在 body 內的最底，以確保所有內容以載入才執行 JavaScript.
+// 這種做法適合各個主流瀏覽器。
+	// var bs64 = Base64.encode("Hello, world!");
+	// var de64 = Base64.decode(bs64);
+	// document.getElementById('b64').innerHTML = bs64;
+	// document.getElementById('dec').innerHTML = de64;
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<div id="lvlid" detail="04"></div>
+<div id="level_content">
+    <p>"可能藏在畫面各個角落的連結，會不會太缺德？"</p>
+    <p>我覺得這樣可以增加互動性，沒什麼不好啊 :D</p>
+    <br>
+    <p>咳咳！總之，這關還是找連結。</p>
+    <p>你會知道連結不是只能放在文字上。</p>
+    <p>它的花樣要玩可是非常多的！這個教學關卡只挑四種出來而已。</p>
+
+    <br><br>
+    <p>提示：紅、綠、重</p>
+    <div id="floating">
+        <img id="fruitimg" src="img/fruit.jpg" width="609" height="349" alt="" usemap="#t4map">
+        <map name="t4map">
+            <area id="fruitlink" shape="circle" coords="254,68,70">
+        </map>
+    </div>
+</div>

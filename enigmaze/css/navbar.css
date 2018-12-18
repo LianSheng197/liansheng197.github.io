@@ -1,0 +1,40 @@
+/* navbar */
+.topnav {
+    overflow: hidden;
+    background: -webkit-linear-gradient(#666, #444);
+    background: -o-linear-gradient(#666, #444);
+    background: -moz-linear-gradient(#666, #444);
+    background: linear-gradient(#666, #444);
+    box-shadow: 2px 2px 2px 2px rgba(44, 44, 44, 0.5);
+    -moz-user-select: none;  /* for Firefox */
+    -webkit-user-select: none;   /* for Chrome */
+    font-size: 20px;
+}
+
+/* navbar item */
+.topnav .left{
+    color: rgba(255, 255, 255, 0.85);
+    margin-left:5px;
+    margin-right:5px;
+    float:left;
+    -webkit-transition:3s;   /* 改變數字的時候有淡入淡出的效果 */
+    transition:3s;
+}
+.topnav .right{
+    color: rgba(255, 255, 255, 0.85);
+    margin-left:5px;
+    margin-right:5px;
+    float:right;
+    -webkit-transition:3s;   /* 改變數字的時候有淡入淡出的效果 */
+    transition:3s;
+}
+.topnav a {
+    float: left;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    text-decoration: none;
+}  
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}

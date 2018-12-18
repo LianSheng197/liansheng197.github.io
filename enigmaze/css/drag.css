@@ -1,0 +1,82 @@
+/* window type */
+.window {
+    width: 50%;
+    min-width: 460px;
+    height: 60%;
+    min-height: 360px;
+    position: absolute;
+    z-index: 9;
+    background-color: #494949;
+    text-align: left;
+    border: 2px solid #242424;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(44, 44, 44, 0.5);
+    color: black;
+    overflow: hidden;
+}
+
+.terminal {
+    width: 50%;
+    height: 60%;
+    position: absolute;
+    z-index: 9;
+    background-color: rgba(44, 44, 44, 0.8);
+    text-align: left;
+    border: 1px solid #242424;
+    color: rgb(214, 214, 214);
+    overflow: hidden;
+}
+
+/* windowheader */
+.windowheader {
+    -moz-user-select: none;  /* for Firefox */
+    -webkit-user-select: none;   /* for Chrome */
+    padding: 2px;
+    /* cursor: move; */
+    z-index: 10;
+    background-color: #444;
+    box-shadow: 2px 2px 2px 1px rgba(44, 44, 44, 0.5);
+    color: #fff;
+    opacity: 1 !important;
+}
+
+/* .windowheader ::before{
+    content: "<i class='fa fa-times-circle'></i>";
+} */
+
+/* window close button */
+.windowheader .fa-times-circle{
+    color: rgb(255, 105, 105);
+    margin-left: 3px;
+    margin-right: 5px;
+}
+.windowheader .fa-times-circle:hover{
+    color: rgb(255, 159, 159);
+}
+
+/* window content: iframe */
+.window iframe {
+    margin-left: 0.5%;
+    margin-top: 0.5%;
+    text-align: center;
+    border: 0;
+    width: 99%;
+    height: calc(97.5% - 20px);
+}
+
+/* initial position */
+#window1 {
+    left: 200px;
+    top: 40px;
+}
+
+#window2 {
+    left: 160px;
+    top: 80px;
+}
+
+/* select window */
+.active {
+    z-index: 100;
+}

@@ -1,0 +1,84 @@
+/* No scroll */
+html, body {
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden
+}
+
+/* Body Ubuntu font */
+body { 
+    background-color:black; 
+    color: rgb(224, 224, 224); 
+    font-family: 'Inconsolata', sans-serif; 
+    font-family: Ubuntu + monospace; 
+    font-size: 12px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 300; 
+    line-height: 20px;
+
+    background-image: url("../img/bg_general.png");
+    background-size: cover;
+}
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 48px;
+    top: 20px;
+    z-index: 5;
+    padding: 2px;
+}
+
+button {
+    background-color: black;
+    border: 1px solid rgb(160, 212, 255);
+}
+
+button:hover {
+    color: green;
+}
+
+.horizontal ul li {
+    display: inline;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 3px;
+    color: beige;
+    border: 1px solid white;
+}
+
+.horizontal ul li:hover {
+    color: red;
+    cursor: pointer;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    font-size: 16px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+hr {
+    max-width: 60%;
+    margin-left: 0px;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+h4 {
+    margin-bottom: 0;
+    color: bisque;
+}
+
+input {
+    background-color: dimgrey;
+    color: aliceblue;
+    border: 1px solid black;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+/* Terminal style */
+#terminal { white-space: pre; }
+#b { display: none; } 
