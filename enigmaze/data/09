@@ -1,0 +1,22 @@
+<div id="lvlid" detail="09"></div>
+<div id="level_content">
+    <p>真是好眼力！接著迎來教學關卡的最後一關：大雜燴</p>
+    <br>
+    <p>本關會融合前8關的各個特點，通過後你就完成了教學任務了。</p>
+    <p>那麼，開始吧！</p>
+    <p>(注意：若本關有遇到任何困難，請善用 Google)</p>
+
+    <div id="t9imgarea">
+        <img id="t9img" src="img/eastasia.jpg" alt="圖片發生錯誤">
+    </div>
+    <div id="t9container"></div>
+
+    <br><br>
+    <div id="t9ansarea" hidden>
+        <span>Ans: </span>
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+        <span>&nbsp;</span>
+        <button id="t9check">驗證答案</button>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div id="lvlid" detail="0e"></div>
+<div id="level_content">
+    <p>恭喜你通過了教學關卡。</p>
+    <p>這個是開啟第一大關的密碼，請妥善保管：</p>
+    <br>
+    <span id="c1pw">2019HNY4c1</span>
+    <br>
+    <br>
+    <p>回到首頁時把它輸入到奇怪的輸入框即可。 <button id="backhome">點擊我回到首頁</button></p>
+</div>

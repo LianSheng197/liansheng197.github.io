@@ -27,8 +27,72 @@ div#floatlink:hover {
 }
 
 div#floating {
+    transition: 0.5s;
     position: absolute;
     z-index: 10000;
     left: 40%;
     top: 30%;
+}
+
+.t7redblock {
+    position: absolute;
+    right: 100px;
+    top: 100px;
+    width: 100px; 
+    height: 100px;
+    border: 1px solid white;
+    z-index: 100;
+}
+
+#t7ans {
+    font-size: 16px;
+    text-align: center;
+    line-height: 100px;
+    position: absolute;
+    right: 100px;
+    top: 100px;
+    width: 100px; 
+    height: 100px;
+}
+
+#t7anslink:hover {
+    padding: 4px;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(253, 131, 131);
+    background-color: rgb(0, 0, 0);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#t8rect {
+    width: 100px;
+    height: 100px;
+    padding: 16px;
+    border: 2px dashed #aaaaaa;
+}
+
+#t9img {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+}
+
+#t9container {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    width: 200px;
+    height: 200px;
+}
+
+#t9ansarea > input {
+    text-align: center;
+    width: 2rem;
+}
+
+#c1pw {
+    color: pink;
+    font-size: 20px;
+    border: 1px solid white;
+    padding: 3px;
 }

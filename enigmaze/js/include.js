@@ -44,7 +44,7 @@ function includeData() {
             display.innerHTML = this.responseText;
           }
           if (this.status == 404) {
-            display.innerHTML = "找不到頁面: " + origin + "<br>請按底下的【重新載入】按鈕";
+            display.innerHTML = "<span style='color: red; font-size: 20px;'>Fatal Error</span>: Page " + origin + " Not Found!";
           }
           display.removeAttribute("dat");
         }
@@ -60,3 +60,28 @@ function includeData() {
 
 includeHTML();
 includeData();
+
+//
+//                       _oo0oo_
+//                      o8888888o
+//                      88" . "88
+//                      (| -_- |)
+//                      0\  =  /0
+//                    ___/`---'\___
+//                  .' \\|     |// '.
+//                 / \\|||  :  |||// \
+//                / _||||| -:- |||||- \
+//               |   | \\\  -  /// |   |
+//               | \_|  ''\---/''  |_/ |
+//               \  .-\__  '-'  ___/-. /
+//             ___'. .'  /--.--\  `. .'___
+//          ."" '<  `.___\_<|>_/___.' >' "".
+//         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+//         \  \ `_.   \_ __\ /__ _/   .-` /  /
+//     =====`-.____`.___ \_____/___.-`___.-'=====
+//                       `=---='
+//
+//
+//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+//               佛祖保佑         永無BUG

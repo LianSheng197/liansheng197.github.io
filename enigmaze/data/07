@@ -1,0 +1,16 @@
+<div id="lvlid" detail="07"></div>
+<div id="level_content">
+    <p>恭喜你通過上一關。顯然你沒有因為這是教學關卡就以為可以無腦過。XDDD</p>
+    <br>
+    <p>接著是新的章節，絕對不是因為我想不到梗才換章的，不要誤會。</p>
+    <img class="t7redblock" src="img/redblock.png">
+    <img class="t7redblock" src="img/redblock.png">
+    <img class="t7redblock" src="img/redblock.png">
+    <img class="t7redblock" src="img/redblock.png">
+    <img class="t7redblock" src="img/redblock.png">
+    <img class="t7redblock" src="img/redblock.png">
+    <img class="t7redblock" src="img/redblock.png">
+    <div id="t7ans">
+        <span id="t7anslink">進入下一關</span>
+    </div>
+</div>

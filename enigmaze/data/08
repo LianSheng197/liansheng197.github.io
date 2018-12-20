@@ -1,0 +1,13 @@
+<div id="lvlid" detail="08"></div>
+<div id="level_content">
+    <p>上一關我刻意不提示，你還是順利通過了。</p>
+    <p>這表示你具備相當的推理能力 (或者直覺、直覺也是實力的一種)</p>
+    <br>
+    <p>這關又是另一個主題，算是上一個主題的變形，請看：</p>
+
+    <div id="floating">
+        <div id="t8rect"></div>
+        <br>
+        <img id="t8dragimg" src="img/t8.png">
+    </div>
+</div>

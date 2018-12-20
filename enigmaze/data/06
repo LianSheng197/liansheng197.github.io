@@ -1,0 +1,12 @@
+<div id="lvlid" detail="06"></div>
+<div id="level_content">
+    <p>上一關的 ROT-26 其實還蠻有名的 -- 惡搞的有名。有興趣可以上網找相關資訊 :D</p>
+    <br>
+    <p>解開通關密語。接著在輸入框中填入後按 Enter 即可。</p>
+    <br>
+    <div id="floating">
+        <img src="img/t6.png" style="width: 200%; height: auto;">
+    </div>
+    <span>Ans: </span>
+    <input id="t6input" type="text">
+</div>

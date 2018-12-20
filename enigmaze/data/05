@@ -1,4 +1,14 @@
 <div id="lvlid" detail="05"></div>
 <div id="level_content">
-    
+    <p>OK，找連結的關卡已經結束，接下來這關開始新的章節。</p>
+    <p>解開下列題目，取得通關密語，在輸入框中填入後按 Enter 即可。</p>
+    <br>
+    <p>
+        在古典密碼學裡，<span style="color: red; font-size: 16px;">ROT-13 </span>是一個著名的簡易替換式密碼，它的作用就是把原本的英文字母取代成往後<span style="color: red; font-size: 16px;"> 13 </span>位之後的的字母。<br>
+        舉個例子，原文如果是 "Apple"，那它就會被轉換成 "Nccyr"。<br>
+        因為只是簡單替換，所以後人將它類推成 ROT-14, ROT-15... 等，都是可行的。<br><br>
+        那麼問題來了，請問 "HakunaMatata" 以 ROT-26 轉換後得到的結果是什麼？
+    </p>
+    <span>Ans: </span>
+    <input id="rot26" type="text">
 </div>
