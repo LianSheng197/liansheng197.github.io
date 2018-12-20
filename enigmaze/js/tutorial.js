@@ -5,7 +5,7 @@ window.onbeforeunload = function(){
     }
 };
 
-tEND();
+t1();
 
 function t1() {
     $("#title_class").text("搜索達人#1");
