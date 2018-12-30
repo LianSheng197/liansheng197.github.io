@@ -1,0 +1,8 @@
+<div id="level_content">
+    <span class="link dir" id="a4n">向北走 ↑</span>
+    <span class="link dir" id="a4s">向南走 ↓</span>
+    <span class="link dir" id="a4e">向東走 →</span>
+    <span class="link dir" id="a4w">向西走 ←</span>
+    <br><br>
+    
+</div>

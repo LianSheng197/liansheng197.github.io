@@ -22,8 +22,8 @@ body {
 }
 
 .main {
-    height: 100vh;
-    width: 100vw;
+    height: calc(100vh - 20px);
+    width: calc(100vw - 48px);
     position: absolute;
     left: 48px;
     top: 20px;

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>localhost test</title>
+</head>
+<body>
+    <audio id="b64" controls>
+        <source id="audioSource" src=""></source>
+    </audio>
+    <script>
+        // ajax: https://stackoverflow.com/questions/11589387/load-txt-file-using-jquery-or-ajax
+        // audio source change: https://stackoverflow.com/questions/10792163/change-audio-src-with-javascript
+        $(function(){
+            $.ajax({
+                url: "./2.mp3.base64",
+                async: false,
+                success: function (data){
+                    $("#audioSource").attr("src", "data:audio/mpeg;base64,"+data);
+
+                    b64.load();
+                    b64.play();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

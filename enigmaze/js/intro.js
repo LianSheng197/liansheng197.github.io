@@ -5,7 +5,7 @@ $("#intro_link").attr("title", "連結可能藏在任何地方，請務必留意
 $("#intro_enigmaze").attr("title", "結合了謎題及單向通行的性質，宛如置身於充滿機關的迷宮裡");
 
 $("#tutorial").attr("title", "教學關卡 (點擊進入)");
-$("#class01").attr("title", "敬請期待");
+$("#class01").attr("title", "Class-1 (點擊進入)");
 $("#class02").attr("title", "敬請期待");
 $("#class03").attr("title", "敬請期待");
 $("#class04").attr("title", "敬請期待");
@@ -13,6 +13,9 @@ $("#class05").attr("title", "敬請期待");
 
 $("#tutorial").on("click", function(){
     window.open('tutorial.html', '_blank');
+})
+$("#class01").on("click", function(){
+    window.open('class01.html', '_blank');
 })
 
 $("#intro_irreversible").on("click", function(){

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input id="file" type="file">
+    <script>
+        document.getElementById('file').onchange = function(){   
+            var file = this.files[0];        
+            var reader = new FileReader();
+            try {
+                reader.onload = function(progressEvent){
+                    // Entire file
+                    console.log(this.result);
+                
+                    // By lines
+                    var lines = this.result.split(/\r\n|\n/);
+                    console.log(lines.length + " lines.");
+                    for(var line = 0; line < lines.length; line++){
+                        console.log(lines[line]);
+                    }
+                };
+                reader.readAsText(file, 'big5');
+
+            } catch (error) {
+                console.log('file no change.');
+            }
+        }
+    </script>
+</body>
+</html>

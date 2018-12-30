@@ -1,0 +1,81 @@
+/* class 01 css */
+.link:hover {
+    color: red;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    font-size: 16pt;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+/* Direction */
+.dir {
+    font-size: 14pt;
+}
+
+span.dir {
+    display: block;
+    border: 2px solid white;
+    line-height: 40px;
+    width: 120px;
+    height: auto;
+    text-align: center;
+    padding: 4px;
+}
+
+span.dir[id$=n] {
+    color: rgb(0, 255, 0);
+}
+span.dir[id$=s] {
+    color: rgb(255, 0, 0);
+}
+span.dir[id$=e] {
+    color: rgb(0, 255, 255);
+}
+span.dir[id$=w] {
+    color: rgb(255, 0, 234);
+}
+
+
+/* Hint */
+#hintcontainer {
+    position: absolute;
+    left: -48px;
+    bottom: 0;
+    color: burlywood;
+    font-size: 16pt;
+    font-weight: 800;
+    
+    padding: 6px;
+    background-color: black;
+    line-height: 20pt;
+    width: 100vw; 
+    border: 2px solid rgb(92, 92, 92);
+}
+
+#hint {
+    position: absolute;
+    left: 80px;
+    bottom: 0;
+    font-size: 12pt;
+    line-height: 20pt;
+    padding: 4px;
+    border: 2px solid white;
+    display: block;
+    width: calc(100% - 80px - 160px + 2px);
+    height: 100%; 
+}
+
+#hts {
+    text-align: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    line-height: 20pt;
+    padding: 4px;
+    border: 2px solid white;
+    display: block;
+    width: 160px;
+    height: 100%;
+}

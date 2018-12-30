@@ -9,7 +9,6 @@
     <div id="t9imgarea">
         <img id="t9img" src="img/eastasia.jpg" alt="圖片發生錯誤">
     </div>
-    <div id="t9container"></div>
 
     <br><br>
     <div id="t9ansarea" hidden>
