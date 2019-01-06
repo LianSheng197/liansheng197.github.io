@@ -4,5 +4,12 @@
     <span class="link dir" id="c2e">向東走 →</span>
     <span class="link dir" id="c2w">向西走 ←</span>
     <br><br>
+    <div id="lightup">
+        <h4 id="c1cp">神秘的方陣</h4>
+        <table>
+            <tbody id="light-table"></tbody>
+        </table>
+    </div>
+    <div id="cpanel"></div>
     
 </div>

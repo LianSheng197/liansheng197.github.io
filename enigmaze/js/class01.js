@@ -7,6 +7,8 @@ window.onbeforeunload = function(){
 
 // Item Global Variable //
 
+var control_panel = false;
+
 var key_orange = false;
 var key_green = false;
 var key_red = false;
@@ -15,6 +17,14 @@ var use_orange = false;
 var use_green = false;
 var use_red = false;
 
+var open_orange = false;
+var open_green = false;
+var open_red = false;
+
+var randps = makeid();
+var achvrkey = Base64.decode("cGFzc3dvcmQgaXMgJw==") + randps + "'";
+var clickmecnt = 0;
+
 //////////////////////////
 
 // After file read, run it.
@@ -22,8 +32,9 @@ function run() {
     // Hint Timestamp
     $(".dir").on("click", function(){   
         $("#hts").text(getTS());
-        getTS();
     })
+
+    item();
 }
 
 function getTS(){
@@ -35,7 +46,6 @@ function getTS(){
     var ms = parseInt(now.getMilliseconds() / 100);
     var time = hh + ":" + mm + ":" + ss + "." + ms;
 
-    console.log(time);
     return time;
 }
 
@@ -48,390 +58,444 @@ function pre() {
     $("#title_class").text("序");
     $('#level_display').attr('dat', '101');
     $("#level").text("Class01 - Prelude");
-    includeData(); run();
+    includeData();
     
     $("#c01p01next").on("click", function(){   
-        a1();
+        fna1();
     })
 }
 
 ////////////////// maze-A ///////////////////
-function a1() {
-    $("#c01maininfo").html("<p>幸好有指南針，不會迷失方向...</p><br><br>");
+function fna1() {
+    $("#c01maininfo").html(`
+        <p>牆面上寫着紅色的 <span style="color: darkred;">watch?</span> 似乎年代久遠，十分暗淡斑駁了。</p>
+    `);
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1A1');
     $("#level").text("Class01 - Maze");
-    includeData(); run();
+    includeData(); run(); item();
+
+    $("#rano1").html("");
     
     $("#a1n").on("click", function(){   
         sh1();
     });
     $("#a1s").on("click", function(){   
-        ds();
+        fnds();
     });
     $("#a1e").on("click", function(){   
-        me();
-        b1();
+        fnme();
+        fnb1();
     });
     $("#a1w").on("click", function(){   
-        ww();
+        fnww();
     });
 }
 
-function a2() {
+function fna2() {
+    $("#c01maininfo").html(`
+        <p><span style="color: darkred;">_TaKUSkLtQ8</span></p>
+    `);
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1A2');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#a2n").on("click", function(){   
-        dn();
+        fndn();
     });
     $("#a2s").on("click", function(){   
-        ms();
-        a3();
+        fnms();
+        fna3();
     });
     $("#a2e").on("click", function(){   
-        de();
+        fnde();
     });
     $("#a2w").on("click", function(){   
-        ww();
+        fnww();
     });
 }
 
-function a3() {
+function fna3() {
+    $("#c01maininfo").html("");
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1A3');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#a3n").on("click", function(){ 
-        mn();  
-        a2();
+        fnmn();  
+        fna2();
     });
     $("#a3s").on("click", function(){ 
-        ms();  
-        a4();
+        fnms();  
+        fna4();
     });
     $("#a3e").on("click", function(){   
-        me();
-        b3();
+        fnme();
+        fnb3();
     });
     $("#a3w").on("click", function(){   
-        ww();
+        fnww();
     });
 }
 
-function a4() {
+function fna4() {
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1A4');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#a4n").on("click", function(){  
-        mn(); 
-        a3();
+        fnmn(); 
+        fna3();
     });
     $("#a4s").on("click", function(){   
-        ws();
+        fnws();
     });
     $("#a4e").on("click", function(){   
-        de();
+        fnde();
     });
     $("#a4w").on("click", function(){   
-        ww();
+        fnww();
     });
 }
 
 ////////////////// maze-B ///////////////////
-function b1() {
+function fnb1() {
+    $("#c01maininfo").html("");
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1B1');
     $("#level").text("Class01 - Maze");
     includeData(); run();
+
+    if(!key_red) {
+        clickmecnt = 0;
+        var tmp = clickmecnt;
+        $("#rano1").html(`<div style="color: darkred;">Click Me</div>`);
+        $("#rano1").on("click", function(){   
+            if(tmp == 0){
+                $("#rano1").html(`<div style="color: darkred;">more</div>`);
+            } else if(tmp == 1) {
+                $("#rano1").html(`<div style="color: darkred;">more.</div>`);
+            } else if(tmp == 2) {
+                $("#rano1").html(`<div style="color: darkred;">more..</div>`);
+            } else if(tmp == 3) {
+                $("#rano1").html(`<div style="color: darkred;">more...</div>`);
+            } else if(tmp == 4) {
+                $("#rano1").html(`
+                    <div style="color: darkred;">
+                        <input id="clickme" type="text" maxlength="6" size="6">
+                    </div>
+                `);
+
+                clickmeinput();
+            }
+
+            tmp++;
+        });
+    }
     
     $("#b1n").on("click", function(){   
-        wn();
+        fnwn();
     });
     $("#b1s").on("click", function(){   
-        ds();
+        fnds();
     });
     $("#b1e").on("click", function(){   
-        me();
-        c1();
+        fnme();
+        fnc1();
     });
     $("#b1w").on("click", function(){   
-        mw();
-        a1();
+        fnmw();
+        fna1();
     });
 }
 
-function b2() {
+function fnb2() {
+    $("#c01maininfo").html("");
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1B2');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#b2n").on("click", function(){   
-        dn();
+        fndn();
     });
     $("#b2s").on("click", function(){   
-        ms();
-        b3();
+        fnms();
+        fnb3();
     });
     $("#b2e").on("click", function(){   
-        me();
-        c2();
+        fnme();
+        fnc2();
     });
     $("#b2w").on("click", function(){   
-        dw();
+        fndw();
     });
 }
 
-function b3() {
+function fnb3() {
+    $("#c01maininfo").html(`
+        <p><span style="color: darkred;">v=</span></p>
+    `);
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1B3');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#b3n").on("click", function(){   
-        mn();
-        b2();
+        fnmn();
+        fnb2();
     });
     $("#b3s").on("click", function(){   
-        ms();
-        b4();
+        fnms();
+        fnb4();
     });
     $("#b3e").on("click", function(){   
-        de();
+        fnde();
     });
     $("#b3w").on("click", function(){   
-        mw();
-        a3();
+        fnmw();
+        fna3();
     });
 }
 
-function b4() {
+function fnb4() {
+    $("#c01maininfo").html("");
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1B4');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#b4n").on("click", function(){   
-        mn();
-        b3();
+        fnmn();
+        fnb3();
     });
     $("#b4s").on("click", function(){   
-        ws();
+        fnws();
     });
     $("#b4e").on("click", function(){   
-        me();
-        c4();
+        fnme();
+        fnc4();
     });
     $("#b4w").on("click", function(){   
-        dw();
+        fndw();
     });
 }
 ////////////////// maze-C ///////////////////
-function c1() {
+function fnc1() {
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1C1');
     $("#level").text("Class01 - Maze");
     includeData(); run();
+
+    $("#rano1").html("");
     
     $("#c1n").on("click", function(){   
-        wn();
+        fnwn();
     });
     $("#c1s").on("click", function(){   
-        ms();
-        c2();
+        fnms();
+        fnc2();
     });
     $("#c1e").on("click", function(){   
-        de();
+        fnde();
     });
     $("#c1w").on("click", function(){   
-        mw();
-        b1();
+        fnmw();
+        fnb1();
     });
 }
 
-function c2() {
+function fnc2() {
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1C2');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
+    if(control_panel){
+        ctlp();
+    } else {
+        lightup();
+    }
+    
     $("#c2n").on("click", function(){   
-        mn();
-        c1();
+        fnmn();
+        fnc1();
     });
     $("#c2s").on("click", function(){   
-        ms();
-        c3();
+        fnms();
+        fnc3();
     });
     $("#c2e").on("click", function(){   
-        me();
-        d2();
+        fnme();
+        fnd2();
     });
     $("#c2w").on("click", function(){   
-        mw();
-        b2();
+        fnmw();
+        fnb2();
     });
 }
 
-function c3() {
+function fnc3() {
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1C3');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#c3n").on("click", function(){   
-        mn();
-        c2();
+        fnmn();
+        fnc2();
     });
     $("#c3s").on("click", function(){   
-        ms();
-        c4();
+        fnms();
+        fnc4();
     });
     $("#c3e").on("click", function(){   
-        de();
+        fnde();
     });
     $("#c3w").on("click", function(){   
-        dw();
+        fndw();
     });
 }
 
-function c4() {
+function fnc4() {
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1C4');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#c4n").on("click", function(){   
-        mn();
-        c3();
+        fnmn();
+        fnc3();
     });
     $("#c4s").on("click", function(){   
-        ws();
+        fnws();
     });
     $("#c4e").on("click", function(){   
-        me();
-        d4();
+        fnme();
+        fnd4();
     });
     $("#c4w").on("click", function(){   
-        mw();
-        b4();
+        fnmw();
+        fnb4();
     });
 }
 
 ////////////////// maze-D ///////////////////
-function d1() {
+function fnd1() {
+    $("#c01maininfo").html("");
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1D1');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#d1n").on("click", function(){   
-        wn();
+        fnwn();
     });
     $("#d1s").on("click", function(){   
-        ms();
-        d2();
+        fnms();
+        fnd2();
     });
     $("#d1e").on("click", function(){   
-        me();
-        e1();
+        fnme();
+        fne1();
     });
     $("#d1w").on("click", function(){   
-        dw();
+        fndw();
     });
 }
 
-function d2() {
+function fnd2() {
+    $("#c01maininfo").html("");
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1D2');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#d2n").on("click", function(){   
-        mn();
-        d1();
+        fnmn();
+        fnd1();
     });
     $("#d2s").on("click", function(){   
-        ds();
+        fnds();
     });
     $("#d2e").on("click", function(){   
-        me();
-        e2();
+        fnme();
+        fne2();
     });
     $("#d2w").on("click", function(){   
-        mw();
-        c2();
+        fnmw();
+        fnc2();
     });
 }
 
-function d3() {
+function fnd3() {
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1D3');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#d3n").on("click", function(){   
-        dn();
+        fndn();
     });
     $("#d3s").on("click", function(){   
-        ms();
-        d4();
+        fnms();
+        fnd4();
     });
     $("#d3e").on("click", function(){   
-        me();
-        e3();
+        fnme();
+        fne3();
     });
     $("#d3w").on("click", function(){   
-        dw();
+        fndw();
     });
 }
 
-function d4() {
+function fnd4() {
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1D4');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#d4n").on("click", function(){   
-        mn();
-        d3();
+        fnmn();
+        fnd3();
     });
     $("#d4s").on("click", function(){   
-        ws();
+        fnws();
     });
     $("#d4e").on("click", function(){   
-        de();
+        fnde();
     });
     $("#d4w").on("click", function(){   
-        mw();
-        c4();
+        fnmw();
+        fnc4();
     });
 }
 
 ////////////////// maze-E ///////////////////
-function e1() {
+function fne1() {
+    $("#c01maininfo").html(`
+        <p><span style="color: darkred;">TU/B3</span></p>
+    `);
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1E1');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#e1n").on("click", function(){   
-        wn();
+        fnwn();
     });
     $("#e1s").on("click", function(){   
-        ds();
+        fnds();
     });
     // for Mystery Space
     $("#e1e").on("click", function(){   
-        if(use_orange) {
-            if(use_green) {
-                if(use_red) {
+        if(open_orange) {
+            if(control_panel) {
+                if(open_red) {
                     sh5();
                     sp();
                 } else { sh4(); }
@@ -439,77 +503,80 @@ function e1() {
         } else { sh2(); }
     });
     $("#e1w").on("click", function(){   
-        mw();
-        d1();
+        fnmw();
+        fnd1();
     });
 }
 
-function e2() {
+function fne2() {
+    $("#c01maininfo").html(`
+        <p><span style="color: darkred;">hey, you...</span></p>
+    `);
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1E2');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#e2n").on("click", function(){   
-        dn();
+        fndn();
     });
     $("#e2s").on("click", function(){   
-        ds();
+        fnds();
     });
     $("#e2e").on("click", function(){   
-        we();
+        fnwe();
     });
     $("#e2w").on("click", function(){   
-        mw();
-        d2();
+        fnmw();
+        fnd2();
     });
 }
 
-function e3() {
+function fne3() {
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1E3');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#e3n").on("click", function(){   
-        dn();
+        fndn();
     });
     $("#e3s").on("click", function(){   
-        ms();
-        e4();
+        fnms();
+        fne4();
     });
     $("#e3e").on("click", function(){   
-        we();
+        fnwe();
     });
     $("#e3w").on("click", function(){   
-        mw();
-        d3();
+        fnmw();
+        fnd3();
     });
 }
 
-function e4() {
+function fne4() {
     $("#title_class").text("迷宮內部");
     $('#level_display').attr('dat', '1E4');
     $("#level").text("Class01 - Maze");
     includeData(); run();
     
     $("#e4n").on("click", function(){   
-        mn();
-        e3();
+        fnmn();
+        fne3();
     });
     $("#e4s").on("click", function(){   
-        ws();
+        fnws();
     });
     $("#e4e").on("click", function(){   
-        if(use_green) {
-            if(use_orange) {
+        if(control_panel) {
+            if(open_orange) {
                 sh9();
                 fin();
             } else { sh8(); }
         } else { sh7(); }
     });
     $("#e4w").on("click", function(){   
-        dw();
+        fndw();
     });
 }
 
@@ -522,7 +589,7 @@ function sp() {
     
     $("#back").on("click", function(){   
         sh6();
-        e1();
+        fne1();
     })
 }
 
@@ -535,28 +602,28 @@ function fin() {
     
     // $("#back").on("click", function(){   
     //     sh6();
-    //     e1();
+    //     fne1();
     // })
 }
 
 
 /////////////// Move Direction ////////////////
-function mn() { $("#hint").text("你向北邊移動了"); }
-function ms() { $("#hint").text("你向南邊移動了"); }
-function me() { $("#hint").text("你向東邊移動了"); }
-function mw() { $("#hint").text("你向西邊移動了"); }
+function fnmn() { $("#hint").text("你向北邊移動了"); }
+function fnms() { $("#hint").text("你向南邊移動了"); }
+function fnme() { $("#hint").text("你向東邊移動了"); }
+function fnmw() { $("#hint").text("你向西邊移動了"); }
 
 ////////////////// Dead End ///////////////////
-function dn() { $("#hint").text("北邊是死路"); }
-function ds() { $("#hint").text("南邊是死路"); }
-function de() { $("#hint").text("東邊是死路"); }
-function dw() { $("#hint").text("西邊是死路"); }
+function fndn() { $("#hint").text("北邊是死路"); }
+function fnds() { $("#hint").text("南邊是死路"); }
+function fnde() { $("#hint").text("東邊是死路"); }
+function fndw() { $("#hint").text("西邊是死路"); }
 
 //////////////////// Wall /////////////////////
-function wn() { $("#hint").text("北面是牆壁"); }
-function ws() { $("#hint").text("南面是牆壁"); }
-function we() { $("#hint").text("東面是牆壁"); }
-function ww() { $("#hint").text("西面是牆壁"); }
+function fnwn() { $("#hint").text("北面是牆壁"); }
+function fnws() { $("#hint").text("南面是牆壁"); }
+function fnwe() { $("#hint").text("東面是牆壁"); }
+function fnww() { $("#hint").text("西面是牆壁"); }
 
 //////////////// Special Hint /////////////////
 // for start
@@ -571,3 +638,220 @@ function sh6() { $("#hint").text("你回到了迷宮。"); }
 function sh7() { $("#hint").text("東邊有道綠色的門，上鎖了"); }
 function sh8() { $("#hint").text("東邊那道綠色的門打開了，但裡面還有一道綠色的門，也是鎖著。 不過門後似乎透出亮光，莫非就是出口？"); }
 function sh9() { $("#hint").text("兩道門都開啟了，你朝向光源走去。"); }
+
+///////////////// Light Up (Green) ////////////////
+// init status (0: dark; 1: light.)
+var table_status = Array(25).fill(0);
+var move_count = 0;
+function lightup() {
+    table_status = Array(25).fill(0);
+    move_count = 0;
+    var lt = document.getElementById("light-table");
+    for(var i=0; i<5; i++) {
+        var td_tmp = "<tr>";
+        for(var j=0; j<5; j++) {
+            var no = (i*5+j);
+            td_tmp += "<td id='"+no+"' onclick='change("+no+");'></td>";
+        }
+        td_tmp += "</tr>";
+        lt.innerHTML += td_tmp;
+    }
+}
+
+function change(number) {
+    // light? (1)
+    if(table_status[number] > 0) {
+        turnOFF(number);
+    } else {
+        turnON(number);
+    }
+    // bottom
+    if(number < 20){
+        if(table_status[number+5] > 0) {
+            turnOFF(number+5);
+        } else {
+            turnON(number+5);
+        }
+    }
+    // top
+    if(number > 4 ){
+        if(table_status[number-5] > 0) {
+            turnOFF(number-5);
+        } else {
+            turnON(number-5);
+        }
+    }
+    // right
+    if(number%5 != 4){
+        if(table_status[number+1] > 0) {
+            turnOFF(number+1);
+        } else {
+            turnON(number+1);
+        }
+    }
+    // left
+    if(number%5 != 0){
+        if(table_status[number-1] > 0) {
+            turnOFF(number-1);
+        } else {
+            turnON(number-1);
+        }
+    }
+
+    move_count++;
+    
+    if(chklit()) {
+        if(move_count < 15){
+            window.onbeforeunload = null;
+            alert(Base64.decode("5YG15ris5Yiw5L2c5byK6KGM54K644CC"));
+            alert(Base64.decode("5L2c6ICF5oiR5pyA5oGo5L2c5byK54uX5LqG44CC"));
+            alert(Base64.decode("6KuL5L2g6Zui6ZaL44CC"));
+            window.close();
+        } else {
+            control_panel = true;
+            $("#lightup").hide();
+            $("#hint").text("你解開了方陣，眼前出現了兩個奇怪的東西");
+            $("#hts").text(getTS());
+            ctlp();
+        }
+    }
+}
+
+function turnON(i) {
+    document.getElementById(i).style.backgroundColor = "#e0e0e0";
+    table_status[i] = 1;
+}
+function turnOFF(i) {
+    document.getElementById(i).style.backgroundColor = "#484848";
+    table_status[i] = 0;
+}
+function chklit() {
+    for(var i=0; i<25; i++){
+        if(table_status[i] == 0) 
+            return false;
+    }
+
+    return true;
+}
+
+///////////////// Control Panel ////////////////
+function ctlp() {
+    $("#lightup").text("");
+    $("#cpanel").html(`
+        <img id="redlock" src="img/lock.jpg" width="50px" height="50px" title="紅色的鎖孔">
+        <img id="orangelock" src="img/lock.jpg" width="50px" height="50px" title="橙色的鎖孔">
+    `)
+
+    if(use_red) {
+        $("#redlock").hide();
+    }
+
+    if(use_orange) {
+        $("#orangelock").hide();
+    }
+}
+/////////////// Get Item //////////////
+function getredkey() {
+    key_red = true;
+    item();
+    $("#hint").text("頭上突然掉了一個東西下來，你仔細一看，是一把紅色的鑰匙。");
+    $("#hts").text(getTS());
+}
+
+function clickmeinput() {
+    $("#clickme").on("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            if($("#clickme").val() == randps) {
+                getredkey();
+                $("#rano1").html("");
+            } else {
+                $("#clickme").val("");
+            }
+        }
+    });
+}
+
+function getorangekey() {
+    key_orange = true;
+    item();
+    $("#hint").text("你從隱秘的石板背後發現一把鑰匙，它是橙色的。");
+    $("#hts").text(getTS());
+}
+
+///////////////// Item ////////////////
+function item() {
+    $("#item").html(`
+        <img id="item_c" src="img/compass.png" width="50px" height="50px" title="指南針。幸好有它才能辨別方向。">
+        <img id="item_r" src="img/redkey.png" width="50px" height="50px" title="紅色的鑰匙。由天而降的神秘鑰匙。">
+        <img id="item_o" src="img/orangekey.png" width="50px" height="50px" title="橙色的鑰匙。破解機關後取得的鑰匙。">
+    `);
+
+    if(!key_orange) {
+        $("#item_o").hide();
+    }
+
+    if(!key_red) {
+        $("#item_r").hide();
+    }
+
+    $("#item_c").on("click", function(){
+        $("#hint").text("可以隨處使用的指南針");
+        $("#hts").text(getTS());
+    })
+    $("#item_o").on("click", function(){
+        if(!use_orange){
+            if($("span#c2n").length > 0){
+                $("#hint").text("你使用了橙色的鑰匙，遠處傳來機關聲。");
+                $("#hts").text(getTS());
+                use_orange = true;
+                open_orange = true;
+                $("#orangelock").hide();
+            } else {
+                $("#hint").text("橙色的鑰匙，不知道要去哪裡使用");
+                $("#hts").text(getTS());
+            }
+        } else {
+            $("#hint").text("這把鑰匙你已經使用了");
+            $("#hts").text(getTS());
+        }
+    })
+    $("#item_r").on("click", function(){
+        if(!use_red){
+            if($("span#c2n").length > 0){
+                $("#hint").text("你使用了紅色的鑰匙，遠處傳來機關聲。");
+                $("#hts").text(getTS());
+                use_red = true;
+                open_red = true;
+                $("#redlock").hide();
+            } else {
+                $("#hint").text("紅色的鑰匙，不知道要去哪裡使用");
+                $("#hts").text(getTS());
+            }
+        } else {
+            $("#hint").text("這把鑰匙你已經使用了");
+            $("#hts").text(getTS());
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 6; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}

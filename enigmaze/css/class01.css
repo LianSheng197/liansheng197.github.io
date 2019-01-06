@@ -25,16 +25,16 @@ span.dir {
 }
 
 span.dir[id$=n] {
-    color: rgb(0, 255, 0);
+    color: rgb(208, 255, 208);
 }
 span.dir[id$=s] {
-    color: rgb(255, 0, 0);
+    color: rgb(255, 196, 196);
 }
 span.dir[id$=e] {
-    color: rgb(0, 255, 255);
+    color: rgb(188, 255, 255);
 }
 span.dir[id$=w] {
-    color: rgb(255, 0, 234);
+    color: rgb(255, 198, 250);
 }
 
 
@@ -78,4 +78,66 @@ span.dir[id$=w] {
     display: block;
     width: 160px;
     height: 100%;
+}
+
+/* Control Panel */
+:root{
+    --turn_on: #e0e0e0;
+    --turn_off: #484848;
+    --size: 40px;
+}
+
+#lightup {
+    position: absolute;
+    left: 40%;
+    top: 30%;
+}
+
+#lightup td {
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--turn_off);
+}
+
+td {
+    border: 2px solid black;
+}
+
+#c1cp {
+    color: rgb(0, 255, 0);
+}
+
+#cpanel {
+    position: absolute;
+    left: 40%;
+    top: 30%;
+}
+
+#redlock {
+    -webkit-filter: invert(80%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-55deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-55deg) saturate(600%) contrast(0.8);
+}
+
+#orangelock {
+    -webkit-filter: invert(80%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-30deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-30deg) saturate(600%) contrast(0.8);
+}
+
+/* item */
+#item img {
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#clickme {
+    font-size: 14px;
+    line-height: 14px;
+}
+
+
+/* load count */
+#loadcounterclass01 {
+    position: absolute;
+    right: 10px;
+    bottom: 60px;
 }

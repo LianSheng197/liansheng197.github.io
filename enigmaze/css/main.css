@@ -11,7 +11,7 @@ body {
     color: rgb(224, 224, 224); 
     font-family: 'Inconsolata', sans-serif; 
     font-family: Ubuntu + monospace; 
-    font-size: 12px; 
+    font-size: 16px; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 300; 
@@ -63,7 +63,7 @@ hr {
     max-width: 60%;
     margin-left: 0px;
     margin-top: 0.4rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
 }
 
 h4 {
@@ -82,3 +82,11 @@ input {
 /* Terminal style */
 #terminal { white-space: pre; }
 #b { display: none; } 
+
+#loadcounterintro {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+

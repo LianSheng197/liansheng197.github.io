@@ -6,4 +6,8 @@
     <p>請截圖保存作為你來過此地的證據XD</p>
     <br>
     <span class="link dir" id="back">回到迷宮</span>
+    <div id="loadcounterclass01">
+        <span>本頁瀏覽次數：</span>
+        <img src='https://www.counter12.com/img-24xYyY85za115ccZ-42.gif' alt='counter'>
+    </div>
 </div>
