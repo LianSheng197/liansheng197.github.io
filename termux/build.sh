@@ -1,4 +1,17 @@
-#!~/../usr/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
+
+msgholder () {
+    times=$(( ( RANDOM % 3 )  + 1 ))
+    content=$1
+    let "dlStepNow++"
+    echo -n $1
+    for i in $(seq 1 $times)
+    do
+        sleep 1
+        echo -n "."
+    done
+    echo ""
+}
 
 dlSteps=4
 dlStepNow=0
@@ -49,15 +62,3 @@ msgholder "${envMsg} (${dlStepNow}/${dlSteps})"
 . ~/.bashrc
 
 
-msgholder () {
-    times=$(( ( RANDOM % 3 )  + 1 ))
-    content=$1
-    let "dlStepNow++"
-    echo -n $1
-    for i in $(seq 1 $times)
-    do
-        sleep 1
-        echo -n "."
-    done
-    echo ""
-}
