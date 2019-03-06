@@ -14,7 +14,7 @@ msgholder () {
 }
 
 dlSteps=4
-dlStepNow=0
+dlStepNow=1
 dlMsg="[Step 1] 下載常用套件"
 
 msgholder "${dlMsg} (${dlStepNow}/${dlSteps})"
@@ -29,21 +29,21 @@ pip install --upgrade youtube-dl
 ###############################################
 
 envSteps=3
-envStepNow=0
+envStepNow=1
 envMsg="[Step 2] 設定環境"
 username=""
 phonename=""
 
-msgholder "${envMsg} (${dlStepNow}/${dlSteps})"
+msgholder "${envMsg} (${envStepNow}/${envSteps})"
 
-while [ -z $username ]
+while [ $username =~ [0-9A-Za-z_]+ ]
 do
-    read -p "請輸入名稱：" username
+    read -p "請輸入名稱(只能用數字英文底線)：" username
 done
 
-while [ -z $phonename ]
+while [ $phonename =~ [0-9A-Za-z_]+ ]
 do
-    read -p "請輸入手機名稱：" phonename
+    read -p "請輸入手機名稱(只能用數字英文底線)：" phonename
 done
 
 msgholder "${envMsg} (${dlStepNow}/${dlSteps})"
@@ -59,6 +59,6 @@ printf "%s\n%s\n%s\n" \
 >> ~/.bashrc
 
 msgholder "${envMsg} (${dlStepNow}/${dlSteps})"
-. ~/.bashrc
 
-
+cd ~
+. .bashrc
