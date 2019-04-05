@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>YTRSP - Setting</title>
+    </head>
+    <body>
+        <a href="data:text/html, <textarea></textarea>">123</a>
+        <script>
+            setTimeout(function(){
+                if (document.body.querySelector("ytrsp")) {
+                    alert("Running");
+                }
+                else {
+                    document.title = "請先開啓腳本";
+                    alert("Stop");
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>

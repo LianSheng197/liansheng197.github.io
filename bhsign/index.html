@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>簽名檔</title>
+        <style>
+        fieldset, iframe {
+            display: inline-block;
+            width: 30vw;
+            height: 26vh;
+        }
+
+        body {
+            overflow-y: hidden;
+            background-color: #ddd;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="ctrl">
+            <span>輸入帳號：</span>
+            <input type="text" size="20">
+            <span> - </span>
+            <button onclick="search();">搜尋</button>
+        </div>
+        <div id="disp">
+            <fieldset>
+                <legend>簽名檔 - 1</legend>
+                <iframe id="f1"
+                    src=""
+                    frameborder="0"></iframe>
+            </fieldset>
+            <fieldset>
+                <legend>簽名檔 - 2</legend>
+                <iframe id="f2"
+                    src=""
+                    frameborder="0"></iframe>
+            </fieldset>
+            <fieldset>
+                <legend>簽名檔 - 3</legend>
+                <iframe id="f3"
+                    src=""
+                    frameborder="0"></iframe>
+            </fieldset>
+            <fieldset>
+                <legend>簽名檔 - 4</legend>
+                <iframe id="f4"
+                    src=""
+                    frameborder="0"></iframe>
+            </fieldset>
+            <fieldset>
+                <legend>簽名檔 - 5</legend>
+                <iframe id="f5"
+                    src=""
+                    frameborder="0"></iframe>
+            </fieldset>
+            <fieldset>
+                <legend>簽名檔 - 6</legend>
+                <iframe id="f6"
+                    src=""
+                    frameborder="0"></iframe>
+            </fieldset>
+            <fieldset>
+                <legend>簽名檔 - 7</legend>
+                <iframe id="f7"
+                    src=""
+                    frameborder="0"></iframe>
+            </fieldset>
+            <fieldset>
+                <legend>簽名檔 - 8</legend>
+                <iframe id="f8"
+                    src=""
+                    frameborder="0"></iframe>
+            </fieldset>
+            <fieldset>
+                <legend>簽名檔 - 9</legend>
+                <iframe id="f9"
+                    src=""
+                    frameborder="0"></iframe>
+            </fieldset>
+        </div>
+        <script>        
+        function search() {
+            let input = document.body.querySelector("input").value.toLowerCase();
+            for(let i=1; i<=9; i++){
+                document.querySelector(`#f${i}`).src = `https://gc.bahamut.com.tw/sign/html/${input[0]}/${input[1]}/${input}_${i}.html`
+            }
+        }
+    </script>
+    </body>
+</html>
