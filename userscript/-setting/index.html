@@ -15,24 +15,22 @@
 	</div>
 	<div id="select-script">
 		<fieldset>
-			<legend>請選擇要設定的腳本</legend>
-			<select onchange="location.href=`#${this[this.selectedIndex].id}`; document.querySelector('#opt').setAttribute('inc', `${this[this.selectedIndex].id}`); includeHTML();">
+			<legend>【請選擇要設定的腳本】</legend>
+			<select onchange="selectChange(this)">
 				<option>選擇腳本（未執行的腳本不會顯示在這個列表中）</option>
 				<option id="ag-fsb" style="display: none;">動畫瘋 - 全螢幕發彈幕</option>
 				<option id="bh-acu" style="display: none;">巴哈姆特 - 開啓摺疊留言</option>
 				<option id="bh-fpc" style="display: none;">巴哈姆特 - 發文回覆冷卻倒數</option>
 				<option id="bh-imd" style="display: none;">巴哈姆特 - 改善留言顯示</option>
 				<option id="bh-ohs" style="display: none;">巴哈姆特 - 覆寫小屋樣式</option>
-				<option id="yt-rsp" style="display: none;">Youtube - 指定片段循環播放</option>
+				<option id="yt-rsp" style="display: none;">YouTube - 指定片段循環播放</option>
 			</select>
 		</fieldset>
 	</div>
 	<div id="setting">
 		<fieldset>
-			<legend>腳本設定細項</legend>
-			<div id="opt" inc="ag-fsb">
-				111
-			</div>
+			<legend>【腳本設定細項】</legend>
+			<div id="opt"></div>
 		</fieldset>
 	</div>
 	<div id="loading">
@@ -51,6 +49,10 @@
 		<div id="youtube-repeat-specific-part"></div>
 	</userscript-by-ls> -->
 
+	<script>
+		document.querySelector("#opt").setAttribute("inc", location.hash.slice(1));
+		includeHTML();
+	</script>
 	<script src="js/main.js"></script>
 </body>
 

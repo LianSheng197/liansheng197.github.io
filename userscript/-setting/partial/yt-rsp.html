@@ -1,0 +1,151 @@
+<table border="1px solid #3333" style="word-break: break-all; font-size: 14px">
+    <thead>
+        <tr style="text-align: center;">
+            <td style="width: 100%;">設定細項</td>
+            <td>值</td>
+            <td>
+                <button>儲存設定</button>&nbsp;&nbsp;
+                <button onclick="preview();">預覽</button>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>按鈕大小</td>
+            <td style="text-align: right;">
+                <input id="button_size" type="text" maxlength="2">
+                <span>px</span>
+            </td>
+            <td rowspan="14">
+                <iframe id="yt" width="640" height="360" src="https://www.youtube.com/embed/BMDi-NKCSmY" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </td>
+        </tr>
+        <tr>
+            <td>按鈕圖示大小</td>
+            <td style="text-align: right;">
+                <input id="button_icon_size" type="text" maxlength="2">
+                <span>px</span>
+            </td>
+        </tr>
+        <tr>
+            <td>開始時間按鈕的背景顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="start_bg_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>結束時間按鈕的背景顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="end_bg_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>執行循環按鈕的背景顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="set_bg_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>解除循環按鈕的背景顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="unset_bg_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>（尚未實現）儲存目前循環按鈕的背景顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="save_bg_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>開始時間按鈕的顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="start_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>結束時間按鈕的顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="end_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>執行循環按鈕的顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="set_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>解除循環按鈕的顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="unset_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>（尚未實現）儲存目前循環按鈕的顏色</td>
+            <td style="text-align: right;">
+                <span>#</span>
+                <input id="save_color" type="text" maxlength="8">
+                <span>&nbsp;&nbsp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td>狀態檢查頻率（毫秒）</td>
+            <td style="text-align: right;">
+                <input id="time_check_period" type="text" maxlength="3" minlength="1">
+                <span> ms</span>
+            </td>
+        </tr>
+        <tr>
+            <td>自訂預覽影片</td>
+            <td style="text-align: right;">
+                <input id="preview_id" type="text" size="40">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<spacial></spacial>
+
+<script>
+    function preview() {
+        let yt = document.querySelector("iframe#yt");
+        yt.src = yt.src;
+    }
+
+    
+</script>
+
+<style>
+    input {
+        font-family: monospace;
+        background: #aaa;
+        border: 1px solid #000;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    td {
+        font-family: monospace;
+    }
+</style>

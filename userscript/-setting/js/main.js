@@ -10,6 +10,7 @@ let scriptAbbr = [
     "ag-fsb", "bh-acu", "bh-fpc", "bh-imd", "bh-ohs", "yt-rsp"
 ];
 
+// loading mask
 setTimeout(function () {
     if (document.querySelector("userscript-by-ls")) {
         document.querySelector("span#detect").innerHTML = "完成.";
@@ -36,4 +37,16 @@ setTimeout(function () {
         document.querySelector("span#detect").style.display = "none";
         document.querySelector("span#norun").style.display = "block";
     }
-}, 500);
+}, 1000);
+
+// select onchange
+function selectChange(e) {
+    let id = e[e.selectedIndex].id;
+    if (id == null) {
+        id = "";
+    }
+
+    window.history.replaceState("", "", `#${id}`);
+    document.querySelector('#opt').setAttribute('inc', `${id}`);
+    includeHTML();
+}
