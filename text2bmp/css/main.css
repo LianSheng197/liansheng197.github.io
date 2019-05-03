@@ -50,3 +50,11 @@ input[type='file'] {
 .browse-btn:focus {
     outline: 0;
 }
+
+div#info {
+    position: absolute;
+    z-index: 100;
+    color: #a00;
+    font-size: 18px;
+    font-weight: bold;
+}

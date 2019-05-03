@@ -51,7 +51,8 @@ function drawArray(arr, depth) {
 
         return image;
     } catch (error) {
-        alert("遇到錯誤，請確定上傳的檔案是純文字檔！");
+        let error_text = `遇到錯誤！\n請確定選取的檔案是純 Ascii 文字檔，且檔案不可過大。\n--------\n ${error}`;
+        alert(error_text);
         location.href = '';
     }
 }
