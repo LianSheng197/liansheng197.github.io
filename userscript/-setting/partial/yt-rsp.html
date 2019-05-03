@@ -119,7 +119,7 @@
         <tr>
             <td>自訂預覽影片</td>
             <td style="text-align: right;">
-                <input id="preview_id" type="text" size="40">
+                <input id="preview_id" type="text" size="46">
             </td>
         </tr>
     </tbody>
@@ -130,10 +130,9 @@
 <script>
     function preview() {
         let yt = document.querySelector("iframe#yt");
-        yt.src = yt.src;
+        let pid = document.querySelector("input#preview_id").value.match(/v=[a-zA-Z0-9-_]{11}/).toString().slice(2);
+        yt.src = `https://www.youtube.com/embed/${pid}`;
     }
-
-    
 </script>
 
 <style>
