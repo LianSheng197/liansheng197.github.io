@@ -1,5 +1,3 @@
-let char = [];
-
 function drawArray(arr, depth) {
     try {
         let offset, height, data, image;
@@ -58,6 +56,7 @@ function drawArray(arr, depth) {
 }
 
 function process(event) {
+    var char = [];
     let files = event.target.files
     let reader = new FileReader()
     reader.onload = function () {
@@ -75,7 +74,6 @@ function process(event) {
         if (contents.length % 3 == 2) {
             char[contents.length] = "00";
         }
-
         document.querySelector("div#display").innerHTML = "";
         document.querySelector("div#display").appendChild(drawArray(char, 24));
     }
