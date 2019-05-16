@@ -47,6 +47,7 @@ function drawArray(arr, depth) {
         image.src = 'data:image/bmp;base64,' + btoa(data);
         image.style = "width: 100%; height: auto;";
 
+
         return image;
     } catch (error) {
         let error_text = `遇到錯誤！\n請確定選取的檔案是純 Ascii 文字檔，且檔案不可過大。\n--------\n ${error}`;
@@ -56,12 +57,14 @@ function drawArray(arr, depth) {
 }
 
 function process(event) {
-    var char = [];
-    let files = event.target.files
+    document.querySelector("div#info").innerHTML = '';
+
+    let char = [];
+    let files = event.target.files;
     let reader = new FileReader()
     reader.onload = function () {
-        let contents = this.result
-
+        let contents = this.result;
+        document.querySelector("div#info").innerHTML = `正在讀取檔案...`;
         for (let i = 0; i < contents.length; i++) {
             char[i] = contents[i].charCodeAt(0);
         }
@@ -74,6 +77,7 @@ function process(event) {
         if (contents.length % 3 == 2) {
             char[contents.length] = "00";
         }
+        document.querySelector("div#info").innerHTML = `已完成。`;
         document.querySelector("div#display").innerHTML = "";
         document.querySelector("div#display").appendChild(drawArray(char, 24));
     }
