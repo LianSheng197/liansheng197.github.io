@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# 解 OJ 的工具，目前版本僅支援該目錄下只有一個 java 檔案，否則將出錯。
+# 備份於：20190518
+
+origin=$(pwd)
+cp *.java ~/runtemp.java
+line=$(cat ~/runtemp.java | grep -nE "class\ .+?(\ )?" | cut -c 1)
+str="class runtemp {"
+sed -i "${line}s/^.*$/${str}/" ~/runtemp.java
+
+cd
+
+javac runtemp.java
+java runtemp
+
+rm -f ~/runtemp.java
+rm -f ~/runtemp.class

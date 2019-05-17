@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# 截取登入或鎖定畫面的工具
+# 若要截取登入畫面，強烈建議先登出所有帳號（GUI），而不是另開一個 vt
+# 否則很可能造成 /var/run/lightdm/root/ 底下只有 :1 的奇葩問題
+# 下面那三行渣英文註解是寫給 CLI 看的，因爲那邊預設只支援 ASCII，其他都會變豆腐塊或亂碼。
+# 備份於：20190518
+
+# Take Screenshot Of Login Screen Tool
+# Usage: screenshot <ttyID>
+## Shortcut "Ctrl + Alt + F7" can change to tty7, then its id is 7.
+
+savedir="/home/$USER/Pictures"
+current=$(fgconsole)
+sudo chvt $1
+sleep 1
+sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 xwd -root -out $savedir/screenshot.xwd
+
+sudo chvt $current
+
+convert $savedir/screenshot.xwd $savedir/Screenshot_$(date "+%y%m%d-%H%M%S").png
+rm -f $savedir/screenshot.xwd

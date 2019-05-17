@@ -4,7 +4,7 @@
 ### 目錄 (依照 ASCII 排序)
 <!-- [Display text](Link): Short Description. -->
 > * [2018HNY](2018HNY): 2018 - Happy New Year! 很窮酸的新年快樂。
-> * [bhsign](bhsign): 暴搜簽名檔的意義不明工具，有時還會被擋，Garbage 等級的東西。
+> * [bin](bin): 平時放在 ~/bin 的腳本，沒有特別註明作者或來源的都是自己所做的。
 > * [dnx](dnx): Dynamix Score Calc. 正常人不會用到的湊分數工具。
 > * [dtest](dtest): DataTable Test. 嘗試使用 DataTable。
 > * [enigmaze](enigmaze) 一個主要以文字及連結構成的｢謎宮｣，你能闖到最後嗎？(暫停中)
@@ -13,7 +13,6 @@
 > * [kabuntu](kabuntu): 在論壇卡出的衍生物 v2 (已中止、Preview: 5)
 > * [lightup](lightup): 點燈遊戲(未完成、僅完成手動點擊效果)。
 > * [playmusic](playmusic): 使用 howler.js 達到控制播放。(練習)
-> * [sample](sample): 測試用樣本音樂，一律 30 秒。
-> * [sbox_ajax](sbox_ajax): Ajax Test. 使用 Ajax 讀取主機上的檔案內容。
+> * [sample](sample): 測試用樣本音樂。由 [bin](bin)/makesample 批次輸出。
 > * [termux](termux): （未成形，暫不描述）
 > * [userscript](userscript): 我的 JavaScript 網頁腳本。

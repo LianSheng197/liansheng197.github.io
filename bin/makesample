@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# 製作音樂的片段樣本。
+# 需指定開始時間、持續時間、淡入淡出時間、以及輸出檔案的絕對路徑
+# 能走訪當前所在目錄底下的所有 mp3 檔案並對其截取指定片段
+# 將輸出檔以編號重新命名，再將原始檔名與編號對照寫入 list.txt，以便引用。
+# 備份於：20190518
+
+# 開始、持續、淡入淡出的秒數
+start=50
+duration=20
+fade=3
+
+# 輸出路徑（需要絕對路徑）
+opath="/path/to/output"
+
+# 若該目錄不存在則創一個
+if [ ! -d "$opath" ]; then
+    mkdir -p $opath
+fi
+
+# 若該目錄底下找不到 list.txt 則創一個
+if [ ! -f "$opath/list.txt" ]; then
+    touch "$opath/list.txt"
+fi
+
+# 計算現在目錄下 mp3 檔案的數量（避免迴圈中遇到 "*.mp3" 被當成檔案的錯誤）
+count=$(find . -name '*.mp3' -print | wc -l)
+
+# 取得目前 list.txt 的行數
+line=$(wc -l < "$opath/list.txt")
+
+if [ $count -eq 0 ]; then
+    echo "找不到任何 mp3 檔案，腳本已終止。";
+else
+    echo "找到 $count 個 mp3 檔案，開始作業..."
+    echo ""
+    
+    find "$PWD" -name '*.mp3' -print | while read -r i
+    do
+        # 原始檔名
+        f=$(echo "$i" | sed 's/.*\/\(.*\)/\1/')
+        fn="${f%.*}"
+        # 短檔名（限制長度爲 30）
+        sfn=$(printf "%.30s..." "$fn")
+        # 強制使用純字串比對
+        grep -F "$fn" "$opath/list.txt" > /dev/null
+        
+        if [ $? -eq 0 ]; then
+            echo "$sfn 已存在清單中，略過。"
+        else
+            fd=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$i")
+            # if [ -z $fd ] || [ "${fd%.*}" -lt "$(($start + $duration))" ]; then
+            if [ "${fd%.*}" -lt "$(($start + $duration))" ]; then
+                echo "$sfn 僅有 ${fd%.*} 秒，未達 $(($start + $duration)) 秒，略過。"
+            else
+                line=$(($line + 1))
+                # 檔名編號
+                sn=$(printf "%03d" $line)
+                # 裁剪音檔
+                ffmpeg -i "$i" -ss $start -t $duration -acodec copy "$opath/tmp.mp3" -y < /dev/null 2> /dev/null
+                # 淡入淡出
+                ffmpeg -i "$opath/tmp.mp3" -af "afade=t=in:ss=0:d=$fade,afade=t=out:st=$(($duration - $fade)):d=$fade" "$opath/tmp2.mp3" -y < /dev/null 2> /dev/null
+                # 降低音質，降低檔案空間
+                ffmpeg -i "$opath/tmp2.mp3" -vn -ar 32000 -b:a 64k "$opath/$sn.mp3" -y < /dev/null 2> /dev/null
+                echo "[$sn] ($start-$duration-$fade) $fn" | tee -a $opath/list.txt
+                rm -f $opath/tmp.mp3 $opath/tmp2.mp3
+            fi
+        fi
+    done
+    echo ""
+    echo "已完成"
+fi
