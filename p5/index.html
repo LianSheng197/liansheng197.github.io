@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+    <title>p5.js - AudioPlayer (Global Mode)</title>
+</head>
+
+<body style="background: #333;">
+    <span style="color: #ddd">Input sample audio id (1-999): </span>
+    <input type="text">
+    <span> </span>
+    <button onclick="location.href='#random'; location.reload();">Random</button>
+    <br>
+    <span style="color: #ddd">Speed & Pitch: </span>
+    <button onclick="rate-=0.05; song.playbackRate = rate; document.querySelector('rate').innerText = rate.toFixed(2); toggleSong(); setTimeout(toggleSong, 33);">-</button>
+    <rate style="color: #ddd">1.00</rate>
+    <button onclick="rate+=0.05; song.playbackRate = rate; document.querySelector('rate').innerText = rate.toFixed(2); toggleSong(); setTimeout(toggleSong, 33);">+</button>
+    <span> </span>
+    <span id="current" style="color: #ddd">0.00</span>
+    <span style="color: #ddd"> / </span>
+    <span style="color: #ddd">20.00</span>
+    <br>
+    <script>
+        // p5: FFT
+        let song;
+        let amp;
+        let fft;
+        let button;
+        let volhistory = [];
+        let w;
+        let rate = 1.0;
+
+        // sample list.
+        let origin_list = get("/sample/list.txt");
+        let list = origin_list.split('\n');
+        if (list[list.length - 1] == "") list.pop();
+        let last = list[list.length - 1].match("\\[([0-9]{3})\\]")[1];
+
+        // Control
+        let loopid = 0;
+        let nowplay;
+        let change_audio = document.querySelector("input");
+        let random = Math.floor(Math.random() * last) + 1;
+        if (random < 10) random = `00${random}`;
+        else if (random < 100) random = `0${random}`;
+
+
+        let random_play = (location.hash == "#random");
+        if (random_play) {
+            nowplay = random;
+        } else {
+            nowplay = location.hash.match(/[0-9]{3}/)[0] || location.hash.slice(1);
+        }
+        let sample = `/sample/${nowplay}.mp3`;
+
+        let nowname = origin_list.match("\\[" + nowplay + "\\].+?\\)(.+)\n")[1];
+
+        change_audio.addEventListener("keyup", function (e) {
+            if (e.key == "Enter") {
+                let v = change_audio.value;
+                if (v.length == 1) {
+                    v = `00${v}`;
+                } else if (v.length == 2) {
+                    v = `0${v}`;
+                }
+
+                if (v.length <= 3) {
+                    location.href = `#${v}`;
+                    location.reload();
+                } else {
+                    change_audio.value = "Invalid number.";
+                    change_audio.select();
+                }
+            }
+        });
+
+        document.title = `[${nowplay}] p5.js - AudioPlayer (Global Mode)`;
+        change_audio.value = nowplay;
+        change_audio.focus();
+        change_audio.select();
+
+        function setup() {
+            createCanvas(768, 256);
+
+            if (url_exist(sample)) {
+                change_audio.value = `ID ${nowplay} not found.`;
+                change_audio.select();
+                return;
+            }
+            angleMode(DEGREES);
+            colorMode(HSB, 100);
+            song = loadSound(sample, loaded);
+            button = createButton('Play');
+            button.mousePressed(toggleSong);
+            fft = new p5.FFT(0.7, 128);
+            amp = new p5.Amplitude();
+            w = width / 96;
+        }
+
+        function loaded() {
+            console.log('loaded');
+            toggleSong();
+        }
+
+        function draw() {
+            background(0);
+            let spectrum = fft.analyze();
+            noStroke();
+            for (let i = 0; i < spectrum.length; i++) {
+                let amp = spectrum[i];
+                let y = map(amp, 0, 255, height, 0);
+                fill(i, 255, 255);
+                rect(i * w, y, w - 2, height - y);
+            }
+
+            textSize(16);
+            fill(192);
+            text(nowname, 10, 20);
+        }
+
+        function toggleSong() {
+            if (!song.isPlaying()) {
+                song.play();
+                button.html("Pause");
+                loopid = setInterval(function () {
+                    if (!song.isPlaying()) {
+                        if (random_play) {
+                            location.reload();
+                        } else {
+                            song.play();
+                        }
+                    }
+
+                    document.querySelector("#current").innerText = song.currentTime().toFixed(2);
+                }, 33);
+            } else {
+                //  song.stop();
+                song.pause();
+                button.html("Play");
+                clearInterval(loopid);
+            }
+        }
+
+        // HTTP GET
+        function get(url, set = false) {
+            let temp;
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    temp = xhr.responseText;
+                }
+            }
+            xhr.open('GET', url, set);
+            xhr.send(null);
+
+            return temp;
+        }
+
+        function url_exist(url) {
+            var http = new XMLHttpRequest();
+            http.open('HEAD', url, false);
+            http.send();
+            return http.status == 404;
+        }
+    </script>
+</body>
+
+</html>

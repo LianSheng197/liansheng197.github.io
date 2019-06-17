@@ -11,8 +11,8 @@
 > * [inflation](inflation): inflation-rpg (通膨勇者) 的爛翻譯。(順便練練常用 Markdown)
 > * [ka](ka): 在論壇卡出的衍生物。
 > * [kabuntu](kabuntu): 在論壇卡出的衍生物 v2 (已中止、Preview: 5)
-> * [lightup](lightup): 點燈遊戲(未完成、僅完成手動點擊效果)。
-> * [playmusic](playmusic): 使用 howler.js 達到控制播放。(練習)
-> * [sample](sample): 測試用樣本音樂。由 [bin](bin)/makesample 批次輸出。
+> * [lightup](lightup): 點燈遊戲(未完成、僅完成手動點擊效果)(已中止)。
+> * [p5](p5): 利用 p5.js 製作的簡易音樂播放器，附帶即時波譜圖。
+> * [sample](sample): 測試用樣本音樂。由 [bin/makesample](/bin/makesample) 批次輸出。
 > * [termux](termux): （未成形，暫不描述）
-> * [userscript](userscript): 我的 JavaScript 網頁腳本。
+> * [text2bmp](text2bmp): 產生以 Latin1 支援範圍文字爲基底的點陣圖。（毫無用途）
