@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 Class</title>
+</head>
+
+<body>
+    <script>
+        class Player {
+            constructor(fullName, age, gender, hairColor) {
+                this.fullName = fullName
+                this.age = age
+                this.gender = gender
+                this.hairColor = hairColor
+            }
+
+            toString() {
+                return `Name: ${this.fullName}, Age: ${this.age}`;
+            }
+        }
+
+        const alex = new Player('Alex', 16, 'M', 'Gray')
+        writeln(alex.toString())
+        writeln(alex.fullName)
+
+        const kite = new Player('Kite', 14, 'F', 'Gold')
+        writeln(kite.toString())
+
+        function writeln(str) {
+            document.write(str + "<br>");
+        }
+    </script>
+</body>
+
+</html>

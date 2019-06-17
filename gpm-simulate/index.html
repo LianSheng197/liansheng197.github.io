@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GPM Simulate</title>
+    <style>
+        body {
+            font-family: monospace;
+            font-size: 20px;
+            padding: 0;
+            margin: 0;
+            background-color: #222;
+            cursor: none;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        div#cover_table table {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            border-collapse: collapse;
+        }
+
+        div#cover_table td {
+            width: 12px;
+            min-width: 12px;
+            height: 24px;
+            min-height: 24px;
+            background-color: #222;
+            color: #bbb;
+            padding: 0;
+            user-select: none;
+        }
+
+        div#cover_table td:hover {
+            filter: invert(1);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cover_table">
+        <table>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        function init_table() {
+            const width = Math.floor(window.innerWidth / 12);
+            const height = Math.floor(window.innerHeight / 24);
+
+            let table = document.querySelector("div#cover_table tbody");
+            for (let h = 0; h < height; h++) {
+                let temp = "<tr>";
+                for (let w = 0; w < width; w++) {
+                    temp += `<td>${random_word()}</td>`;
+                }
+                temp += "</tr>";
+
+                table.innerHTML += temp;
+            }
+        }
+
+        init_table();
+
+        function random_word() {
+            let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,." + 
+                           "                              ";   // space * 30
+            return possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+    </script>
+</body>
+
+</html>

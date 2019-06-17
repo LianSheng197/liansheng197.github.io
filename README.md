@@ -16,3 +16,4 @@
 > * [sample](sample): 測試用樣本音樂。由 [bin/makesample](/bin/makesample) 批次輸出。
 > * [termux](termux): （未成形，暫不描述）
 > * [text2bmp](text2bmp): 產生以 Latin1 支援範圍文字爲基底的點陣圖。（毫無用途）
+> * [gpm-simulate](gpm-simulate): 模擬 GPM (General Purpose Mouse)，未完成
