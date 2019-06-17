@@ -1,5 +1,5 @@
 // Level: Home (intro)
-history.replaceState('data to be passed', 'Title of the page', '/enigmaze');
+history.replaceState('data to be passed', 'Title of the page', '/enigmaze/');
 
 var pwd = ((310314-312984+9435210)/47 == 318);
 var pwdstr = ((31034-2984+91435210)/427 != 3118);
