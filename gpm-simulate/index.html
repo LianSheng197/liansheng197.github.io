@@ -39,6 +39,14 @@
         div#cover_table td:hover {
             filter: invert(1);
         }
+
+        .selected {
+            filter: invert(1);
+        }
+
+        .selected:hover {
+            filter: invert(0) !important;
+        }
     </style>
 </head>
 
@@ -50,28 +58,58 @@
     </div>
 
     <script>
-        function init_table() {
-            const width = Math.floor(window.innerWidth / 12);
-            const height = Math.floor(window.innerHeight / 24);
+        const width = Math.floor(window.innerWidth / 12);
+        const height = Math.floor(window.innerHeight / 24);
 
+        // "hAwA:hBwB"
+        let selected;
+
+        // 表格初始化
+        ! function init_table() {
             let table = document.querySelector("div#cover_table tbody");
             for (let h = 0; h < height; h++) {
                 let temp = "<tr>";
                 for (let w = 0; w < width; w++) {
-                    temp += `<td>${random_word()}</td>`;
+                    temp += `<td id="h${h}w${w}">${random_word()}</td>`;
                 }
                 temp += "</tr>";
 
                 table.innerHTML += temp;
             }
+
+            table.querySelectorAll("td").forEach(function (el) {
+                el.addEventListener("click", function () {
+                    selected = `${el.id}:${el.id}`;
+                    draw_selected();
+                });
+            })
+        }()
+
+        // 產生隨機文字
+        function random_word() {
+            let possible =
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,." +
+                "                              "; // space * 30
+            return possible.charAt(Math.floor(Math.random() * possible.length));
         }
 
-        init_table();
+        // 繪製已選取框
+        function draw_selected() {
+            // 取消之前選取
+            document.querySelectorAll("td.selected").forEach(function (el) {
+                el.classList.remove("selected");
+            })
 
-        function random_word() {
-            let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,." + 
-                           "                              ";   // space * 30
-            return possible.charAt(Math.floor(Math.random() * possible.length));
+            // 繪製目前選取
+            if (selected != undefined) {
+                let ts = selected.match(/h(\d+)w(\d+):h(\d+)w(\d+)/);
+                // console.log(ts[1] + ", " + ts[2]);
+                for (let h = ts[1]; h <= ts[3]; h++) {
+                    for (let w = ts[2]; w <= ts[4]; w++) {
+                        document.querySelector(`#h${h}w${w}`).classList.add("selected");
+                    }
+                }
+            }
         }
     </script>
 </body>
